@@ -1,7 +1,53 @@
+import React, { useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Main.module.css'
 
+function MenuRow(props) {
+  const [itemClass, setItemClass] = useState((props.mode && `menu__item--${props.mode}`) || 'menu__item--dark');
+  const [optionClass, setOptionClass] = useState((props.mode && `menu__option--${props.mode}`) || 'menu__option--dark');
+  const [selectedClass, setSelectedClass] = useState((props.mode && `menu__option--selected-${props.mode}`) || 'menu__option--selected-dark');
+  return (
+    <div className={styles['menu__row']}>
+      <div className={[styles['menu__item'], styles[itemClass]].join(' ')}>{props.item.title}</div>
+      { props.options && props.options.map((option) => {
+        const optionStyles = [
+          styles['menu__item'],
+          styles[optionClass],
+        ];
+        if (option.selected) {
+          optionStyles.push(styles[selectedClass])
+        } 
+
+        return <div className={optionStyles.join(' ')}>{option.title}</div>
+      }) }
+    </div>
+  );
+}
+
 export default function Main() {
+  // TODO: move to state
+  const mode = 'light';
+  const fontItem = {
+    title: 'F',
+    // other part >> like what it does on click
+  };
+  const fontOptions = [
+    {
+      title: 'F1',
+      // other part >> like what it does on click
+      selected: false,
+    },
+    {
+      title: 'F2',
+      // other part >> like what it does on click
+      selected: true,
+    },
+    {
+      title: 'F3',
+      // other part >> like what it does on click
+      selected: false,
+    },
+  ];
 
   return (
     <>
@@ -18,6 +64,7 @@ export default function Main() {
             <textarea className={`${styles.text} ${styles['text--light']}`} autofocus></textarea>
 
             <div className={styles.menu}>
+              <MenuRow mode={mode} item={fontItem} options={fontOptions} />
               <div className={styles['menu__row']}>
                 <div className="menu__item menu__item--dark">F</div>
                 <div className="menu__item menu__option menu__option--dark">F1</div>
