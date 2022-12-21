@@ -27,8 +27,23 @@ function MenuRow(props) {
 }
 
 export default function Main() {
-  const [mode, setMode] = useState('light');
+  const LIGHT = 'light';
+  const DARK = 'dark';
+  const BG1 = 'main--bg1';
+  const BG2 = 'main--bg2';
+  const BG3 = 'main--bg3';
+  const BACKGROUNDS = [
+    BG1,
+    BG2,
+    BG3,
+  ];
+  const [mode, setMode] = useState(LIGHT);
+  const [bgStyle, setBgStyle] = useState(BG1);
   // TODO: move to state
+  const shuffleBg = () => {
+    const bg = BACKGROUNDS[Math.floor(Math.random() * BACKGROUNDS.length)]
+    setBgStyle(bg);
+  };
   const fontItem = {
     title: 'F',
     // other part >> like what it does on click
@@ -74,16 +89,17 @@ export default function Main() {
       title: 'B1',
       // other part >> like what it does on click
       selected: true,
-      handleClick: () => setMode('light'),
+      handleClick: () => setMode(LIGHT),
     },
     {
       title: 'B2',
       selected: false,
-      handleClick: () => setMode('dark'),
+      handleClick: () => setMode(DARK),
     },
     {
-      title: 'B3',
+      title: '꩜',
       selected: false,
+      handleClick: () => shuffleBg(),
     },
   ];
   const musicItem = {
@@ -124,7 +140,7 @@ export default function Main() {
   ];
 
   const bgStyles = [
-    styles['main--bg3'],
+    styles[bgStyle],
   ];
   const maskStyles = [
     styles['main__mask'],
