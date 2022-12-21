@@ -28,7 +28,6 @@ function MenuRow(props) {
 
 export default function Main() {
   const [mode, setMode] = useState('light');
-  //const [mode, setMode] = useState('dark');
   // TODO: move to state
   const fontItem = {
     title: 'F',
@@ -124,6 +123,17 @@ export default function Main() {
     },
   ];
 
+  const bgStyles = [
+    styles['main--bg3'],
+  ];
+  const maskStyles = [
+    styles['main__mask'],
+    styles[`main__mask--${mode}`],
+  ];
+  const textStyles = [
+    styles['text'],
+    styles[`text--${mode}`],
+  ];
   const textInput = useRef(null);
 
   useEffect(() => {
@@ -139,11 +149,11 @@ export default function Main() {
         <link rel="icon" href="/images/favicon.ico" />
       </Head>
 
-      <main className={styles['main--bg3']}>
-        <div className={[styles['main__mask'], styles[`main__mask--${mode}`]].join(' ')}>
+      <main className={bgStyles.join(' ')}>
+        <div className={maskStyles.join(' ')}>
 
           <div className={styles.row}>
-            <textarea className={[styles['text'], styles[`text--${mode}`]].join(' ')} ref={textInput}></textarea>
+            <textarea className={textStyles.join(' ')} ref={textInput}></textarea>
 
             <div className={styles.menu}>
               <MenuRow mode={mode} item={fontItem} options={fontOptions} />
