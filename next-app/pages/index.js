@@ -82,17 +82,17 @@ export default function Main() {
     },
   ];
   const bgItem = {
-    title: '⚪️'
+    title: '🔘'
   };
   const bgOptions = [
     {
-      title: 'B1',
+      title: '⚪️',
       // other part >> like what it does on click
       selected: true,
       handleClick: () => setMode(LIGHT),
     },
     {
-      title: 'B2',
+      title: '⚫️',
       selected: false,
       handleClick: () => setMode(DARK),
     },
