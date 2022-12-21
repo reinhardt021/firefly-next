@@ -40,12 +40,14 @@ function MenuRow(props) {
           optionStyles.push(styles[selectedClass])
         } 
 
-        return <div key={index} 
-              className={optionStyles.join(' ')} 
-              onClick={option.handleClick}
-            >
-              {option.title}
-            </div>;
+        return (
+          <div key={index} 
+            className={optionStyles.join(' ')} 
+            onClick={option.handleClick}
+          >
+            {option.title}
+          </div>
+        );
       }) }
     </div>
   );
