@@ -36,6 +36,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## TODO:
 
-- [ ] try basic React Component
+- [x] try basic React Component
+- [x] move over all the things you made so far for FIREFLY
 - [ ] try basic build as Chrome Extension in dev mode
-- [ ] move over all the things you made so far for FIREFLY

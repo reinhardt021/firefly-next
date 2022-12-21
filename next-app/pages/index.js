@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Main.module.css'
 
@@ -26,8 +26,8 @@ function MenuRow(props) {
 }
 
 export default function Main() {
-  //const [mode, setMode] = useState('light');
-  const [mode, setMode] = useState('dark');
+  const [mode, setMode] = useState('light');
+  //const [mode, setMode] = useState('dark');
   // TODO: move to state
   const fontItem = {
     title: 'F',
@@ -121,6 +121,11 @@ export default function Main() {
     },
   ];
 
+  const textInput = useRef(null);
+
+  useEffect(() => {
+    textInput.current.focus();
+  }, []);
 
   return (
     <>
@@ -133,8 +138,9 @@ export default function Main() {
 
       <main className={styles['main--bg3']}>
         <div className={[styles['main__mask'], styles[`main__mask--${mode}`]].join(' ')}>
+
           <div className={styles.row}>
-            <textarea className={[styles['text'], styles[`text--${mode}`]].join(' ')} autofocus></textarea>
+            <textarea className={[styles['text'], styles[`text--${mode}`]].join(' ')} ref={textInput}></textarea>
 
             <div className={styles.menu}>
               <MenuRow mode={mode} item={fontItem} options={fontOptions} />
@@ -143,8 +149,8 @@ export default function Main() {
               <MenuRow mode={mode} item={musicItem} options={musicOptions} />
               <MenuRow mode={mode} item={saveItem} options={saveOptions} />
             </div>
-
           </div>
+
         </div>
       </main>
     </>
