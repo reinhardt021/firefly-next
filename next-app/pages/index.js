@@ -12,6 +12,7 @@ function MenuRow(props) {
       { props.options && props.options.map((option) => {
         const optionStyles = [
           styles['menu__item'],
+          styles['menu__option'],
           styles[optionClass],
         ];
         if (option.selected) {
@@ -25,9 +26,9 @@ function MenuRow(props) {
 }
 
 export default function Main() {
-  const [mode, setMode] = useState('light');
+  //const [mode, setMode] = useState('light');
+  const [mode, setMode] = useState('dark');
   // TODO: move to state
-  //const mode = 'light';
   const fontItem = {
     title: 'F',
     // other part >> like what it does on click
