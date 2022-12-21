@@ -19,7 +19,7 @@ function MenuRow(props) {
           optionStyles.push(styles[selectedClass])
         } 
 
-        return <div className={optionStyles.join(' ')}>{option.title}</div>
+        return <div className={optionStyles.join(' ')} onClick={option.handleClick}>{option.title}</div>
       }) }
     </div>
   );
@@ -29,6 +29,14 @@ export default function Main() {
   const [mode, setMode] = useState('light');
   //const [mode, setMode] = useState('dark');
   // TODO: move to state
+  const toggleMode = () => {
+    if (mode == 'light') {
+      setMode('dark');
+    } else {
+      setMode('light');
+    } 
+    
+  }
   const fontItem = {
     title: 'F',
     // other part >> like what it does on click
@@ -74,6 +82,7 @@ export default function Main() {
       title: 'B1',
       // other part >> like what it does on click
       selected: true,
+      handleClick: toggleMode
     },
     {
       title: 'B2',
