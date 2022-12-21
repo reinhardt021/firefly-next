@@ -25,8 +25,9 @@ function MenuRow(props) {
 }
 
 export default function Main() {
+  const [mode, setMode] = useState('light');
   // TODO: move to state
-  const mode = 'light';
+  //const mode = 'light';
   const fontItem = {
     title: 'F',
     // other part >> like what it does on click
@@ -39,15 +40,86 @@ export default function Main() {
     },
     {
       title: 'F2',
-      // other part >> like what it does on click
       selected: true,
     },
     {
       title: 'F3',
-      // other part >> like what it does on click
       selected: false,
     },
   ];
+  const sizeItem = {
+    title: 'S'
+  };
+  const sizeOptions = [
+    {
+      title: 'S1',
+      // other part >> like what it does on click
+      selected: false,
+    },
+    {
+      title: 'S2',
+      selected: false,
+    },
+    {
+      title: 'S3',
+      selected: true,
+    },
+  ];
+  const bgItem = {
+    title: '⚪️'
+  };
+  const bgOptions = [
+    {
+      title: 'B1',
+      // other part >> like what it does on click
+      selected: true,
+    },
+    {
+      title: 'B2',
+      selected: false,
+    },
+    {
+      title: 'B3',
+      selected: false,
+    },
+  ];
+  const musicItem = {
+    title: '🎵'
+  };
+  const musicOptions = [
+    {
+      title: 'M1',
+      // other part >> like what it does on click
+      selected: true,
+    },
+    {
+      title: 'M2',
+      selected: false,
+    },
+    {
+      title: 'M3',
+      selected: false,
+    },
+  ];
+  const saveItem = {
+    title: '💾'
+  };
+  const saveOptions = [
+    {
+      title: 'md',
+      // other part >> like what it does on click
+      selected: false,
+    },
+    {
+      title: 'ml',
+      selected: false,
+    },
+    {
+      title: 'sy',
+      selected: true,
+    },
+  ];
+
 
   return (
     <>
@@ -59,54 +131,16 @@ export default function Main() {
       </Head>
 
       <main className={styles['main--bg3']}>
-        <div className={`${styles['main__mask']} ${styles['main__mask--light']}`}>
+        <div className={[styles['main__mask'], styles[`main__mask--${mode}`]].join(' ')}>
           <div className={styles.row}>
-            <textarea className={`${styles.text} ${styles['text--light']}`} autofocus></textarea>
+            <textarea className={[styles['text'], styles[`text--${mode}`]].join(' ')} autofocus></textarea>
 
             <div className={styles.menu}>
               <MenuRow mode={mode} item={fontItem} options={fontOptions} />
-              <div className={styles['menu__row']}>
-                <div className="menu__item menu__item--dark">F</div>
-                <div className="menu__item menu__option menu__option--dark">F1</div>
-                <div className="menu__item menu__option menu__option--dark menu__option--selected-dark">F2</div>
-                <div className="menu__item menu__option menu__option--dark">F3</div>
-              </div>
-
-              <div className={styles['menu__row']}>
-                <div className="menu__item menu__item--dark">S</div>
-                <div className="menu__item menu__option menu__option--dark">S1</div>
-                <div className="menu__item menu__option menu__option--dark">S2</div>
-                <div className="menu__item menu__option menu__option--dark menu__option--selected-dark">S3</div>
-              </div>
-
-              <div className={styles['menu__row']}>
-                <div className="menu__item menu__item--dark">⚪️</div>
-                <div className="menu__item menu__option menu__option--dark menu__option--selected-dark">B1</div>
-                <div className="menu__item menu__option menu__option--dark">B2</div>
-                <div className="menu__item menu__option menu__option--dark">B3</div>
-              </div>
-
-              <div className={styles['menu__row']}>
-                <div className="menu__item menu__item--dark">🎵</div>
-                <div className="menu__item menu__option menu__option--dark menu__option--selected-dark">M1</div>
-                <div className="menu__item menu__option menu__option--dark">M2</div>
-                <div className="menu__item menu__option menu__option--dark">M3</div>
-              </div>
-
-              <div className={styles['menu__row']}>
-                <div className="menu__item menu__item--dark">⌨️</div>
-                <div className="menu__item menu__option menu__option--dark">K1</div>
-                <div className="menu__item menu__option menu__option--dark menu__option--selected-dark">K2</div>
-                <div className="menu__item menu__option menu__option--dark">K3</div>
-              </div>
-
-              <div className={styles['menu__row']}>
-                <div className="menu__item menu__item--dark">💾</div>
-                <div className="menu__item menu__option menu__option--dark">md</div>
-                <div className="menu__item menu__option menu__option--dark">ml</div>
-                <div className="menu__item menu__option menu__option--dark menu__option--selected-dark">sy</div>
-              </div>
-
+              <MenuRow mode={mode} item={sizeItem} options={sizeOptions} />
+              <MenuRow mode={mode} item={bgItem} options={bgOptions} />
+              <MenuRow mode={mode} item={musicItem} options={musicOptions} />
+              <MenuRow mode={mode} item={saveItem} options={saveOptions} />
             </div>
 
           </div>
