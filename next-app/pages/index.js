@@ -2,46 +2,62 @@ import React, { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Main.module.css'
 
+const LIGHT = 'light';
+const DARK = 'dark';
+const BG1 = 'main--bg1';
+const BG2 = 'main--bg2';
+const BG3 = 'main--bg3';
+const BACKGROUNDS = [
+  BG1,
+  BG2,
+  BG3,
+];
+
+
 function MenuRow(props) {
+  const rowStyles = [
+    styles['menu__row'],
+  ];
   const itemClass = `menu__item--${props.mode}`
+  const itemStyles = [
+    styles['menu__item'],
+    styles[itemClass],
+  ];
   const optionClass = `menu__option--${props.mode}`
+  const optionDefaultStyles = [
+    styles['menu__item'],
+    styles['menu__option'],
+    styles[optionClass],
+  ];
   const selectedClass = `menu__option--selected-${props.mode}`
 
   return (
-    <div className={styles['menu__row']}>
-      <div className={[styles['menu__item'], styles[itemClass]].join(' ')}>{props.item.title}</div>
+    <div className={rowStyles.join(' ')}>
+      <div className={itemStyles.join(' ')}>{props.item.title}</div>
       { props.options && props.options.map((option, index) => {
-        const optionStyles = [
-          styles['menu__item'],
-          styles['menu__option'],
-          styles[optionClass],
-        ];
+        const optionStyles = [ ...optionDefaultStyles ];
         if (option.selected) {
           optionStyles.push(styles[selectedClass])
         } 
 
-        return <div key={index} className={optionStyles.join(' ')} onClick={option.handleClick}>{option.title}</div>
+        return <div key={index} 
+              className={optionStyles.join(' ')} 
+              onClick={option.handleClick}
+            >
+              {option.title}
+            </div>;
       }) }
     </div>
   );
 }
 
 export default function Main() {
-  const LIGHT = 'light';
-  const DARK = 'dark';
-  const BG1 = 'main--bg1';
-  const BG2 = 'main--bg2';
-  const BG3 = 'main--bg3';
-  const BACKGROUNDS = [
-    BG1,
-    BG2,
-    BG3,
-  ];
   const [mode, setMode] = useState(LIGHT);
   const [bgStyle, setBgStyle] = useState(BG1);
   // TODO: move to state
   const shuffleBg = () => {
-    const bg = BACKGROUNDS[Math.floor(Math.random() * BACKGROUNDS.length)]
+    const bgs = BACKGROUNDS.filter(bg => bg != bgStyle);
+    const bg = bgs[Math.floor(Math.random() * bgs.length)]
     setBgStyle(bg);
   };
   const fontItem = {
