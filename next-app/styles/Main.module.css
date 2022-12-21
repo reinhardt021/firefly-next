@@ -1,5 +1,5 @@
 
-.body--bg1 {
+.main--bg1 {
     /*fallback for old browsers*/
     background: #94c5f8;  
     /*Chrome 10-25, Safari 5.1-6*/
@@ -7,28 +7,28 @@
     /*W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+*/
     background: linear-gradient(150deg, #94c5f8 1%, #a6e6ff 70%, #b1b5ea 100%);
 }
-.body--bg2 {
+.main--bg2 {
     background: #071B26;  
     background: -webkit-linear-gradient(150deg, #071B26 0%, #071B26 30%, #8A3B12 80%, #240E03 100%);
     background: linear-gradient(150deg, #071B26 0%, #071B26 30%, #8A3B12 80%, #240E03 100%);
 }
-.body--bg3 {
+.main--bg3 {
     background: url('/images/pz.jpg');
     background-size: cover;
 }
 
-.body__mask {
+.main__mask {
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.body__mask--light {
+.main__mask--light {
     /*mask over bg to make more subtle*/
     background: rgba(255,255,255,0.7);
 }
-.body__mask--dark {
+.main__mask--dark {
     /*mask over bg to make more subtle*/
     background: rgba(0,0,0,0.7);
 }
@@ -40,7 +40,7 @@
     min-width: 60%;
 }
 
-.main {
+.text {
     margin: 0 1em;
     border-width: thin;
     border-color: grey;
@@ -54,16 +54,16 @@
     /*cursor: '_'; // doesn't work*/ 
     outline: none;
 }
-.main--light {
+.text--light {
     color: black;
     text-shadow: 0 1px 5px rgba(255, 255, 255, 0.35);
 }
-.main--dark {
+.text--dark {
     color: white;
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.35);
 }
 
-.main--typing {
+.text--typing {
     border-color: transparent;
     background: transparent;
     resize: none;
