@@ -85,7 +85,15 @@ body {
   overflow-x: hidden;
 }
 
+/* resetting height for full screen */
+html {
+  height: 100%;
+}
 body {
+  /*margin: 0 auto;*/
+  min-height: 100vh;
+  font-family: sans-serif;
+
   color: rbg(--foreground-rgb);
   background: linear-gradient(
       to bottom,
