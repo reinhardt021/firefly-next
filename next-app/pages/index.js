@@ -3,13 +3,14 @@ import Head from 'next/head'
 import styles from '../styles/Main.module.css'
 
 function MenuRow(props) {
-  const [itemClass, setItemClass] = useState((props.mode && `menu__item--${props.mode}`) || 'menu__item--dark');
-  const [optionClass, setOptionClass] = useState((props.mode && `menu__option--${props.mode}`) || 'menu__option--dark');
-  const [selectedClass, setSelectedClass] = useState((props.mode && `menu__option--selected-${props.mode}`) || 'menu__option--selected-dark');
+  const itemClass = `menu__item--${props.mode}`
+  const optionClass = `menu__option--${props.mode}`
+  const selectedClass = `menu__option--selected-${props.mode}`
+
   return (
     <div className={styles['menu__row']}>
       <div className={[styles['menu__item'], styles[itemClass]].join(' ')}>{props.item.title}</div>
-      { props.options && props.options.map((option) => {
+      { props.options && props.options.map((option, index) => {
         const optionStyles = [
           styles['menu__item'],
           styles['menu__option'],
@@ -19,7 +20,7 @@ function MenuRow(props) {
           optionStyles.push(styles[selectedClass])
         } 
 
-        return <div className={optionStyles.join(' ')} onClick={option.handleClick}>{option.title}</div>
+        return <div key={index} className={optionStyles.join(' ')} onClick={option.handleClick}>{option.title}</div>
       }) }
     </div>
   );
@@ -29,14 +30,6 @@ export default function Main() {
   const [mode, setMode] = useState('light');
   //const [mode, setMode] = useState('dark');
   // TODO: move to state
-  const toggleMode = () => {
-    if (mode == 'light') {
-      setMode('dark');
-    } else {
-      setMode('light');
-    } 
-    
-  }
   const fontItem = {
     title: 'F',
     // other part >> like what it does on click
@@ -82,11 +75,12 @@ export default function Main() {
       title: 'B1',
       // other part >> like what it does on click
       selected: true,
-      handleClick: toggleMode
+      handleClick: () => setMode('light'),
     },
     {
       title: 'B2',
       selected: false,
+      handleClick: () => setMode('dark'),
     },
     {
       title: 'B3',
