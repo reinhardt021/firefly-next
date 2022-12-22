@@ -134,13 +134,13 @@
 .menu__option--selected-dark {
     background: rgba(255,255,255,0.65);
 }
-.menu__option--sans-serif {
+.menu__option--sans-serif, .text--sans-serif {
   font-family: sans-serif;
 }
-.menu__option--serif {
+.menu__option--serif, .text--serif {
   font-family: serif;
 }
-.menu__option--script{
+.menu__option--script, .text--script {
   font-family: cursive;
 }
 .menu__option--small, .text--small {

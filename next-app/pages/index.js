@@ -66,6 +66,11 @@ function MenuRow(props) {
     </div>
   );
 }
+
+const T_SANS = 'sans-serif';
+const T_SERIF = 'serif';
+const T_SCRIPT = 'script';
+
 const T_SMALL = 'small';
 const T_MEDIUM = 'medium';
 const T_LARGE = 'large';
@@ -73,30 +78,30 @@ const T_LARGE = 'large';
 export default function Main() {
   const [mode, setMode] = useState(LIGHT);
   const [bgStyle, setBgStyle] = useState(BG2);
+  const [textFamily, setTextFamily] = useState(T_SANS);
   const [textSize, setTextSize] = useState(T_MEDIUM);
   // TODO: move to state
   const fontItem = {
     title: 'F',
-    // other part >> like what it does on click
   };
   const fontOptions = [
     {
       id: 'f1',
       title: (<span className={styles['menu__option--sans-serif']}>F</span>),
-      // other part >> like what it does on click
-      selected: false,
+      selected: true,
+      handleClick: () => setTextFamily(T_SANS),
     },
     {
       id: 'f2',
       title: (<span className={styles['menu__option--serif']}>F</span>),
-      //title: 'F2',
-      selected: true,
+      selected: false,
+      handleClick: () => setTextFamily(T_SERIF),
     },
     {
       id: 'f3',
       title: (<span className={styles['menu__option--script']}>F</span>),
-      //title: 'F3',
       selected: false,
+      handleClick: () => setTextFamily(T_SCRIPT),
     },
   ];
   const sizeItem = {
@@ -106,7 +111,6 @@ export default function Main() {
     {
       id: 's1',
       title: (<span className={styles['menu__option--small']}>S</span>),
-      // other part >> like what it does on click
       selected: false,
       handleClick: () => setTextSize(T_SMALL),
     },
@@ -139,7 +143,6 @@ export default function Main() {
     {
       id: 'b1',
       title: '⚪️',
-      // other part >> like what it does on click
       selected: true,
       handleClick: () => setMode(LIGHT),
     },
@@ -163,7 +166,6 @@ export default function Main() {
     {
       id: 'm1',
       title: '🔥',
-      // other part >> like what it does on click
       selected: true,
     },
     {
@@ -184,7 +186,6 @@ export default function Main() {
     {
       id: 'd1',
       title: 'md',
-      // other part >> like what it does on click
       selected: false,
     },
     {
@@ -209,6 +210,7 @@ export default function Main() {
   const textStyles = [
     styles['text'],
     styles[`text--${mode}`],
+    styles[`text--${textFamily}`],
     styles[`text--${textSize}`],
   ];
   const textInput = useRef(null);
