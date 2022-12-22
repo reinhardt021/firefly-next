@@ -40,8 +40,8 @@
 .row {
     display: flex;
     justify-content: center;
-    height: 80%;
-    min-width: 60%;
+    height: 90%;
+    min-width: 90%;
     padding: 1em;
 }
 

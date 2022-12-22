@@ -76,7 +76,6 @@ export default function Main() {
     setBgStyle(currBG => {
       const bgs = BACKGROUNDS.filter(bg => bg != currBG);
       const newBG = bgs[Math.floor(Math.random() * bgs.length)]
-      console.log(`CURR [${currBG}] NEW [${newBG}] from bgs:`, bgs);
 
       return newBG
     });
@@ -122,7 +121,7 @@ export default function Main() {
     },
   ];
   const saveItem = {
-    title: '💾'
+    title: '⬇'
   };
   const saveOptions = [
     {
@@ -135,11 +134,11 @@ export default function Main() {
       title: '💌',
       selected: false,
     },
-    {
-      id: 'd3',
-      title: '⬆',
-      selected: true,
-    },
+    //{
+      //id: 'd3',
+      //title: '⬆',
+      //selected: true,
+    //},
   ];
 
   const bgStyles = [
