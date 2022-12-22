@@ -23,9 +23,7 @@ export default function Main() {
   const [bgStyle, setBgStyle] = useState(BG2);
   const [textFamily, setTextFamily] = useState(T_SANS);
   const [textSize, setTextSize] = useState(T_MEDIUM);
-  const fontItem = {
-    title: 'F',
-  };
+
   const fontOptions = [
     {
       id: 'f1',
@@ -46,9 +44,6 @@ export default function Main() {
       handleClick: () => setTextFamily(T_SCRIPT),
     },
   ];
-  const sizeItem = {
-    title: 'S'
-  };
   const sizeOptions = [
     {
       id: 's1',
@@ -69,9 +64,6 @@ export default function Main() {
       handleClick: () => setTextSize(T_LARGE),
     },
   ];
-  const bgItem = {
-    title: '🔘'
-  };
   const shuffleBg = () => {
     setBgStyle(currBG => {
       const bgs = BACKGROUNDS.filter(bg => bg != currBG);
@@ -97,12 +89,16 @@ export default function Main() {
       id: 'b3',
       title: '꩜',
       selected: false,
-      handleClick: shuffleBg,
+      handleClick: () => {
+        setBgStyle(currBG => {
+          const bgs = BACKGROUNDS.filter(bg => bg != currBG);
+          const newBG = bgs[Math.floor(Math.random() * bgs.length)]
+
+          return newBG
+        });
+      },
     },
   ];
-  const musicItem = {
-    title: '🎵'
-  };
   const musicOptions = [
     {
       id: 'm1',
@@ -120,9 +116,6 @@ export default function Main() {
       selected: false,
     },
   ];
-  const saveItem = {
-    title: '⬇'
-  };
   const saveOptions = [
     {
       id: 'd1',
@@ -158,11 +151,6 @@ export default function Main() {
         element.click();
       },
     },
-    //{
-      //id: 'd3',
-      //title: '⬆',
-      //selected: true,
-    //},
   ];
 
   const bgStyles = [
@@ -200,11 +188,11 @@ export default function Main() {
             <textarea className={textStyles.join(' ')} ref={textInput} id="input-text"></textarea>
 
             <div className={styles.menu}>
-              <MenuRow mode={mode} item={fontItem} options={fontOptions} />
-              <MenuRow mode={mode} item={sizeItem} options={sizeOptions} />
-              <MenuRow mode={mode} item={bgItem} options={bgOptions} />
-              <MenuRow mode={mode} item={musicItem} options={musicOptions} />
-              <MenuRow mode={mode} item={saveItem} options={saveOptions} />
+              <MenuRow mode={mode} item={{ title: 'F' }} options={fontOptions} />
+              <MenuRow mode={mode} item={{ title: 'S' }} options={sizeOptions} />
+              <MenuRow mode={mode} item={{ title: '🔘' }} options={bgOptions} />
+              <MenuRow mode={mode} item={{ title: '🎵' }} options={musicOptions} />
+              <MenuRow mode={mode} item={{ title: '⬇' }} options={saveOptions} />
             </div>
           </div>
 
