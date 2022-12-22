@@ -108,16 +108,19 @@ export default function Main() {
       title: (<span className={styles['menu__option--small']}>S</span>),
       // other part >> like what it does on click
       selected: false,
+      handleClick: () => setTextSize(T_SMALL),
     },
     {
       id: 's2',
       title: (<span className={styles['menu__option--medium']}>S</span>),
-      selected: false,
+      selected: true,
+      handleClick: () => setTextSize(T_MEDIUM),
     },
     {
       id: 's3',
       title: (<span className={styles['menu__option--large']}>S</span>),
-      selected: true,
+      selected: false,
+      handleClick: () => setTextSize(T_LARGE),
     },
   ];
   const bgItem = {
