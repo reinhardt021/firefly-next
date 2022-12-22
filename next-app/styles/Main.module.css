@@ -92,6 +92,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    font-weight: bold;
 }
 .menu__item--light {
     background: rgba(0,0,0,0.65);
@@ -131,6 +133,24 @@
 }
 .menu__option--selected-dark {
     background: rgba(255,255,255,0.65);
+}
+.menu__option--sans-serif {
+  font-family: sans-serif;
+}
+.menu__option--serif {
+  font-family: serif;
+}
+.menu__option--script{
+  font-family: cursive;
+}
+.menu__option--small {
+  font-size: small;
+}
+.menu__option--medium {
+ font-size: medium;
+}
+.menu__option--large {
+ font-size: large;
 }
 
 .blinking-cursor {

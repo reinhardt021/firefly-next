@@ -33,6 +33,7 @@ function MenuRow(props) {
   const selectedClass = `menu__option--selected-${props.mode}`
 
   const updateSelected = (id, callback) => {
+    console.log('updating selected[' + id + ']');
     // loop through options and change selected for ID?
     const newOptions = options.map(option => {
       option.selected = (id == option.id);
@@ -40,7 +41,10 @@ function MenuRow(props) {
       return option;
     });
     setOptions(newOptions);
-    if (callback) callback();
+    if (callback) {
+      console.log('executing handleClick');
+      callback()
+    }
   };
 
   return (
@@ -74,18 +78,20 @@ export default function Main() {
   const fontOptions = [
     {
       id: 'f1',
-      title: 'F1',
+      title: (<span className={styles['menu__option--sans-serif']}>F</span>),
       // other part >> like what it does on click
       selected: false,
     },
     {
       id: 'f2',
-      title: 'F2',
+      title: (<span className={styles['menu__option--serif']}>F</span>),
+      //title: 'F2',
       selected: true,
     },
     {
       id: 'f3',
-      title: 'F3',
+      title: (<span className={styles['menu__option--script']}>F</span>),
+      //title: 'F3',
       selected: false,
     },
   ];
@@ -95,18 +101,18 @@ export default function Main() {
   const sizeOptions = [
     {
       id: 's1',
-      title: 'S1',
+      title: (<span className={styles['menu__option--small']}>S</span>),
       // other part >> like what it does on click
       selected: false,
     },
     {
       id: 's2',
-      title: 'S2',
+      title: (<span className={styles['menu__option--medium']}>S</span>),
       selected: false,
     },
     {
       id: 's3',
-      title: 'S3',
+      title: (<span className={styles['menu__option--large']}>S</span>),
       selected: true,
     },
   ];
@@ -114,9 +120,14 @@ export default function Main() {
     title: '🔘'
   };
   const shuffleBg = () => {
-    const bgs = BACKGROUNDS.filter(bg => bg != bgStyle);
-    const bg = bgs[Math.floor(Math.random() * bgs.length)]
-    setBgStyle(bg);
+    setBgStyle(currBG => {
+      const bgs = BACKGROUNDS.filter(bg => bg != currBG);
+      const newBG = bgs[Math.floor(Math.random() * bgs.length)]
+      console.log('shuffling bgs:', bgs);
+      console.log(`CURR [${currBG}] NEW [${newBG}]`);
+
+      return newBG
+    });
   };
   const bgOptions = [
     {
@@ -136,7 +147,7 @@ export default function Main() {
       id: 'b3',
       title: '꩜',
       selected: false,
-      handleClick: () => shuffleBg(),
+      handleClick: shuffleBg,
     },
   ];
   const musicItem = {
@@ -145,18 +156,18 @@ export default function Main() {
   const musicOptions = [
     {
       id: 'm1',
-      title: 'M1',
+      title: '🔥',
       // other part >> like what it does on click
       selected: true,
     },
     {
       id: 'm2',
-      title: 'M2',
+      title: '☁️',
       selected: false,
     },
     {
       id: 'm3',
-      title: 'M3',
+      title: '🌊',
       selected: false,
     },
   ];
