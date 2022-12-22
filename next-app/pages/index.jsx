@@ -44,6 +44,7 @@ export default function Main() {
       handleClick: () => setTextFamily(T_SCRIPT),
     },
   ];
+
   const sizeOptions = [
     {
       id: 's1',
@@ -64,6 +65,7 @@ export default function Main() {
       handleClick: () => setTextSize(T_LARGE),
     },
   ];
+
   const bgOptions = [
     {
       id: 'b1',
@@ -89,6 +91,7 @@ export default function Main() {
       }),
     },
   ];
+
   const musicOptions = [
     {
       id: 'm1',
@@ -106,6 +109,7 @@ export default function Main() {
       selected: false,
     },
   ];
+
   const saveOptions = [
     {
       id: 'd1',
