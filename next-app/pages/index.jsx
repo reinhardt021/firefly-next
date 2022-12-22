@@ -141,6 +141,22 @@ export default function Main() {
       id: 'd2',
       title: '💌',
       selected: false,
+      handleClick: () => {
+        const textBody = document.getElementById('input-text').value;
+        //const href = `mailto:?Subject=&body=${textBody}`;
+        //const json = `mailto:?Subject=&body=${JSON.stringify(textBody)}`;
+        const params = {
+          Subject: '',
+          body: textBody,
+        };
+        const sParams = new URLSearchParams(params).toString();
+        const mailHREF = `mailto:?${sParams}`
+
+        const element = document.createElement('a');
+        element.href = mailHREF;
+        document.body.appendChild(element);
+        element.click();
+      },
     },
     //{
       //id: 'd3',
