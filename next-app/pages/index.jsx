@@ -64,14 +64,6 @@ export default function Main() {
       handleClick: () => setTextSize(T_LARGE),
     },
   ];
-  const shuffleBg = () => {
-    setBgStyle(currBG => {
-      const bgs = BACKGROUNDS.filter(bg => bg != currBG);
-      const newBG = bgs[Math.floor(Math.random() * bgs.length)]
-
-      return newBG
-    });
-  };
   const bgOptions = [
     {
       id: 'b1',
@@ -89,14 +81,12 @@ export default function Main() {
       id: 'b3',
       title: '꩜',
       selected: false,
-      handleClick: () => {
-        setBgStyle(currBG => {
-          const bgs = BACKGROUNDS.filter(bg => bg != currBG);
-          const newBG = bgs[Math.floor(Math.random() * bgs.length)]
+      handleClick: () => setBgStyle(currBG => {
+        const bgs = BACKGROUNDS.filter(bg => bg != currBG);
+        const newBG = bgs[Math.floor(Math.random() * bgs.length)]
 
-          return newBG
-        });
-      },
+        return newBG
+      }),
     },
   ];
   const musicOptions = [
