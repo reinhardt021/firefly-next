@@ -42,10 +42,10 @@
     justify-content: center;
     height: 80%;
     min-width: 60%;
+    padding: 1em;
 }
 
 .text {
-    margin: 0 1em;
     border-width: thin;
     border-color: grey;
     border-style: dashed;
@@ -78,6 +78,7 @@
 
 
 .menu {
+    margin-left: 1em;
     align-self: flex-start;
 }
 
