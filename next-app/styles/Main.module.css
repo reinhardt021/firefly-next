@@ -1,16 +1,20 @@
 
 .main--bg1 {
-    /*fallback for old browsers*/
-    background: #94c5f8;  
-    /*Chrome 10-25, Safari 5.1-6*/
-    background: -webkit-linear-gradient(150deg, #94c5f8 1%, #a6e6ff 70%, #b1b5ea 100%);
-    /*W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+*/
-    background: linear-gradient(150deg, #94c5f8 1%, #a6e6ff 70%, #b1b5ea 100%);
+  --color-base: #94c5f8;
+  --color-grad: 150deg, var(--color-base) 1%, #a6e6ff 70%, #b1b5ea 100%;
+  /*fallback for old browsers*/
+  background: var(--color-base);  
+  /*Chrome 10-25, Safari 5.1-6*/
+  background: -webkit-linear-gradient(var(--color-grad));
+  /*W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+*/
+  background: linear-gradient(var(--color-grad));
 }
 .main--bg2 {
-    background: #071B26;  
-    background: -webkit-linear-gradient(150deg, #071B26 0%, #071B26 30%, #8A3B12 80%, #240E03 100%);
-    background: linear-gradient(150deg, #071B26 0%, #071B26 30%, #8A3B12 80%, #240E03 100%);
+  --color-base: #071B26;
+  --color-grad: 150deg, var(--color-base) 0%, #071B26 30%, #8A3B12 80%, #240E03 100%;
+  background: var(--color-base);  
+  background: -webkit-linear-gradient(var(--color-grad));
+  background: linear-gradient(var(--color-grad));
 }
 .main--bg3 {
     background: url('/images/pz.jpg');
