@@ -99,12 +99,11 @@ export default function Main() {
     },
   ];
 
+  let audio = null;
   const musicItem = { 
     title: '⏯️',
     handleClick: () => {
-      // TODO: move this to a popup to play or not
-      //audioElements[audioFile].play()
-      setupAudio(audioFile, volume);
+      setupAudio(audioFile, volume); // TODO: move this to a popup to play or not
     },
   };
   const musicOptions = [
@@ -188,19 +187,10 @@ export default function Main() {
 
   const setupAudio = (filename, vol = 60, loop = true) => {
     const newAudio = new Audio(filename);
-    //const newAudio = (
-      //<audio 
-        //src={filename}
-        //volume={vol/100}
-        //autoplay
-        //loop
-      //></audio>
-    //);
     newAudio.load();
     newAudio.autoplay = true;
     newAudio.volume = vol / 100;
     newAudio.loop = loop;
-    //newAudio.muted = true;
     newAudio.play()
       .then(_ => {
         console.log('autoplay');
@@ -211,12 +201,6 @@ export default function Main() {
 
     return newAudio;
   };
-
-  //const audioElements = {
-    //[A1]: setupAudio(A1),
-    //[A2]: setupAudio(A2),
-    //[A3]: setupAudio(A3),
-  //};
 
   const handleMouseMove = () => {
     setIsTyping(false)
