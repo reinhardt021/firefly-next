@@ -66,10 +66,14 @@ function MenuRow(props) {
     </div>
   );
 }
+const T_SMALL = 'small';
+const T_MEDIUM = 'medium';
+const T_LARGE = 'large';
 
 export default function Main() {
   const [mode, setMode] = useState(LIGHT);
-  const [bgStyle, setBgStyle] = useState(BG1);
+  const [bgStyle, setBgStyle] = useState(BG2);
+  const [textSize, setTextSize] = useState(T_MEDIUM);
   // TODO: move to state
   const fontItem = {
     title: 'F',
@@ -123,8 +127,7 @@ export default function Main() {
     setBgStyle(currBG => {
       const bgs = BACKGROUNDS.filter(bg => bg != currBG);
       const newBG = bgs[Math.floor(Math.random() * bgs.length)]
-      console.log('shuffling bgs:', bgs);
-      console.log(`CURR [${currBG}] NEW [${newBG}]`);
+      console.log(`CURR [${currBG}] NEW [${newBG}] from bgs:`, bgs);
 
       return newBG
     });
@@ -203,6 +206,7 @@ export default function Main() {
   const textStyles = [
     styles['text'],
     styles[`text--${mode}`],
+    styles[`text--${textSize}`],
   ];
   const textInput = useRef(null);
 

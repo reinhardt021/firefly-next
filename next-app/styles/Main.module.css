@@ -143,13 +143,13 @@
 .menu__option--script{
   font-family: cursive;
 }
-.menu__option--small {
+.menu__option--small, .text--small {
   font-size: small;
 }
-.menu__option--medium {
+.menu__option--medium, .text--medium {
  font-size: medium;
 }
-.menu__option--large {
+.menu__option--large, .text--large {
  font-size: large;
 }
 
