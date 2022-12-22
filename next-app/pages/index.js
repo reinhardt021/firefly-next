@@ -15,6 +15,7 @@ const BACKGROUNDS = [
 
 
 function MenuRow(props) {
+  const [options, setOptions] = useState(props.options);
   const rowStyles = [
     styles['menu__row'],
   ];
@@ -31,19 +32,28 @@ function MenuRow(props) {
   ];
   const selectedClass = `menu__option--selected-${props.mode}`
 
+  const updateSelected = (id, callback) => {
+    // loop through options and change selected for ID?
+    const newOptions = options.map(option => {
+      option.selected = (id == option.id);
+
+      return option;
+    });
+    setOptions(newOptions);
+    if (callback) callback();
+  };
+
   return (
     <div className={rowStyles.join(' ')}>
       <div className={itemStyles.join(' ')}>{props.item.title}</div>
-      { props.options && props.options.map((option, index) => {
+      { options && options.map((option, index) => {
         const optionStyles = [ ...optionDefaultStyles ];
-        if (option.selected) {
-          optionStyles.push(styles[selectedClass])
-        } 
+        if (option.selected) optionStyles.push(styles[selectedClass]) 
 
         return (
           <div key={index} 
             className={optionStyles.join(' ')} 
-            onClick={option.handleClick}
+            onClick={() => updateSelected(option.id, option.handleClick)}
           >
             {option.title}
           </div>
@@ -57,26 +67,24 @@ export default function Main() {
   const [mode, setMode] = useState(LIGHT);
   const [bgStyle, setBgStyle] = useState(BG1);
   // TODO: move to state
-  const shuffleBg = () => {
-    const bgs = BACKGROUNDS.filter(bg => bg != bgStyle);
-    const bg = bgs[Math.floor(Math.random() * bgs.length)]
-    setBgStyle(bg);
-  };
   const fontItem = {
     title: 'F',
     // other part >> like what it does on click
   };
   const fontOptions = [
     {
+      id: 'f1',
       title: 'F1',
       // other part >> like what it does on click
       selected: false,
     },
     {
+      id: 'f2',
       title: 'F2',
       selected: true,
     },
     {
+      id: 'f3',
       title: 'F3',
       selected: false,
     },
@@ -86,15 +94,18 @@ export default function Main() {
   };
   const sizeOptions = [
     {
+      id: 's1',
       title: 'S1',
       // other part >> like what it does on click
       selected: false,
     },
     {
+      id: 's2',
       title: 'S2',
       selected: false,
     },
     {
+      id: 's3',
       title: 'S3',
       selected: true,
     },
@@ -102,19 +113,27 @@ export default function Main() {
   const bgItem = {
     title: '🔘'
   };
+  const shuffleBg = () => {
+    const bgs = BACKGROUNDS.filter(bg => bg != bgStyle);
+    const bg = bgs[Math.floor(Math.random() * bgs.length)]
+    setBgStyle(bg);
+  };
   const bgOptions = [
     {
+      id: 'b1',
       title: '⚪️',
       // other part >> like what it does on click
       selected: true,
       handleClick: () => setMode(LIGHT),
     },
     {
+      id: 'b2',
       title: '⚫️',
       selected: false,
       handleClick: () => setMode(DARK),
     },
     {
+      id: 'b3',
       title: '꩜',
       selected: false,
       handleClick: () => shuffleBg(),
@@ -125,15 +144,18 @@ export default function Main() {
   };
   const musicOptions = [
     {
+      id: 'm1',
       title: 'M1',
       // other part >> like what it does on click
       selected: true,
     },
     {
+      id: 'm2',
       title: 'M2',
       selected: false,
     },
     {
+      id: 'm3',
       title: 'M3',
       selected: false,
     },
@@ -143,15 +165,18 @@ export default function Main() {
   };
   const saveOptions = [
     {
+      id: 'd1',
       title: 'md',
       // other part >> like what it does on click
       selected: false,
     },
     {
+      id: 'd2',
       title: 'ml',
       selected: false,
     },
     {
+      id: 'd3',
       title: 'sy',
       selected: true,
     },
