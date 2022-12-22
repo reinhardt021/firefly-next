@@ -143,8 +143,6 @@ export default function Main() {
       selected: false,
       handleClick: () => {
         const textBody = document.getElementById('input-text').value;
-        //const href = `mailto:?Subject=&body=${textBody}`;
-        //const json = `mailto:?Subject=&body=${JSON.stringify(textBody)}`;
         const params = {
           Subject: '',
           body: textBody,
@@ -154,6 +152,8 @@ export default function Main() {
 
         const element = document.createElement('a');
         element.href = mailHREF;
+        element.target = '_blank';
+        element.rel = 'noopener noreferrer';
         document.body.appendChild(element);
         element.click();
       },
