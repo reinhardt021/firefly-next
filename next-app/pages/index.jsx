@@ -128,6 +128,14 @@ export default function Main() {
       id: 'd1',
       title: '📄',
       selected: false,
+      handleClick: () => {
+        const element = document.createElement('a');
+        const file = new Blob([document.getElementById('input-text').value], {type: 'text/plain'});
+        element.href = URL.createObjectURL(file);
+        element.download = 'firefly-note.txt';
+        document.body.appendChild(element);
+        element.click();
+      },
     },
     {
       id: 'd2',
@@ -173,7 +181,7 @@ export default function Main() {
         <div className={maskStyles.join(' ')}>
 
           <div className={styles.row}>
-            <textarea className={textStyles.join(' ')} ref={textInput}></textarea>
+            <textarea className={textStyles.join(' ')} ref={textInput} id="input-text"></textarea>
 
             <div className={styles.menu}>
               <MenuRow mode={mode} item={fontItem} options={fontOptions} />
