@@ -76,7 +76,6 @@ export default function Main() {
   const [bgStyle, setBgStyle] = useState(BG2);
   const [textFamily, setTextFamily] = useState(T_SANS);
   const [textSize, setTextSize] = useState(T_MEDIUM);
-  // TODO: move to state
   const fontItem = {
     title: 'F',
   };
