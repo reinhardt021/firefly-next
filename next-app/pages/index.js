@@ -2,18 +2,6 @@ import React, { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Main.module.css'
 
-const LIGHT = 'light';
-const DARK = 'dark';
-const BG1 = 'main--bg1';
-const BG2 = 'main--bg2';
-const BG3 = 'main--bg3';
-const BACKGROUNDS = [
-  BG1,
-  BG2,
-  BG3,
-];
-
-
 function MenuRow(props) {
   const [options, setOptions] = useState(props.options);
   const rowStyles = [
@@ -27,6 +15,7 @@ function MenuRow(props) {
   const optionClass = `menu__option--${props.mode}`
   const optionDefaultStyles = [
     styles['menu__item'],
+    styles[itemClass],
     styles['menu__option'],
     styles[optionClass],
   ];
@@ -66,6 +55,13 @@ function MenuRow(props) {
     </div>
   );
 }
+
+const LIGHT = 'light';
+const DARK = 'dark';
+const BG1 = 'main--bg1';
+const BG2 = 'main--bg2';
+const BG3 = 'main--bg3';
+const BACKGROUNDS = [ BG1, BG2, BG3 ];
 
 const T_SANS = 'sans-serif';
 const T_SERIF = 'serif';
@@ -185,17 +181,17 @@ export default function Main() {
   const saveOptions = [
     {
       id: 'd1',
-      title: 'md',
+      title: '📄',
       selected: false,
     },
     {
       id: 'd2',
-      title: 'ml',
+      title: '💌',
       selected: false,
     },
     {
       id: 'd3',
-      title: 'sy',
+      title: '⬆',
       selected: true,
     },
   ];
