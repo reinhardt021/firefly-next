@@ -18,12 +18,18 @@ const T_SMALL = 'small';
 const T_MEDIUM = 'medium';
 const T_LARGE = 'large';
 
+const A1 = '/audio/AUD-01-Fire-sound-effect.mp3'
+const A2 = '/audio/AUD-02-Windy-stormy-night-sound-effect.mp3'
+const A3 = '/audio/AUD-03-free-ocean-waves-sound.mp3'
+
 export default function Main() {
   const [mode, setMode] = useState(LIGHT);
   const [bgStyle, setBgStyle] = useState(BG2);
   const [textFamily, setTextFamily] = useState(T_SANS);
   const [textSize, setTextSize] = useState(T_MEDIUM);
   const [isTyping, setIsTyping] = useState(false);
+  const [audioFile, setAudioFile] = useState(A2);
+  const [volume, setVolume] = useState(90);
 
   const fontOptions = [
     {
@@ -93,21 +99,32 @@ export default function Main() {
     },
   ];
 
+  const musicItem = { 
+    title: '⏯️',
+    handleClick: () => {
+      // TODO: move this to a popup to play or not
+      //audioElements[audioFile].play()
+      setupAudio(audioFile, volume);
+    },
+  };
   const musicOptions = [
     {
       id: 'm1',
       title: '🔥',
       selected: true,
+      handleClick: () => setAudioFile(A1),
     },
     {
       id: 'm2',
       title: '☁️',
       selected: false,
+      handleClick: () => setAudioFile(A2),
     },
     {
       id: 'm3',
       title: '🌊',
       selected: false,
+      handleClick: () => setAudioFile(A3),
     },
   ];
 
@@ -169,6 +186,42 @@ export default function Main() {
     menuStyles.push(styles['menu--typing']);
   }
 
+  const setupAudio = (filename, vol = 60, loop = true) => {
+    const newAudio = new Audio(filename);
+    //const newAudio = (
+      //<audio 
+        //src={filename}
+        //volume={vol/100}
+        //autoplay
+        //loop
+      //></audio>
+    //);
+    newAudio.load();
+    newAudio.autoplay = true;
+    newAudio.volume = vol / 100;
+    newAudio.loop = loop;
+    //newAudio.muted = true;
+    newAudio.play()
+      .then(_ => {
+        console.log('autoplay');
+      })
+      .catch(err => {
+        console.err('err', err);
+      });
+
+    return newAudio;
+  };
+
+  //const audioElements = {
+    //[A1]: setupAudio(A1),
+    //[A2]: setupAudio(A2),
+    //[A3]: setupAudio(A3),
+  //};
+
+  const handleMouseMove = () => {
+    setIsTyping(false)
+  };
+
   const textInput = useRef(null);
   useEffect(() => {
     textInput.current.focus();
@@ -183,7 +236,7 @@ export default function Main() {
         <link rel="icon" href="/images/favicon.ico" />
       </Head>
 
-      <main className={bgStyles.join(' ')} onMouseMove={() => setIsTyping(false)}>
+      <main className={bgStyles.join(' ')} onMouseMove={handleMouseMove}>
         <div className={maskStyles.join(' ')}>
 
           <div className={styles.row}>
@@ -198,7 +251,7 @@ export default function Main() {
               <MenuRow mode={mode} item={{ title: 'F' }} options={fontOptions} />
               <MenuRow mode={mode} item={{ title: 'S' }} options={sizeOptions} />
               <MenuRow mode={mode} item={{ title: '🔘' }} options={bgOptions} />
-              <MenuRow mode={mode} item={{ title: '🎵' }} options={musicOptions} />
+              <MenuRow mode={mode} item={musicItem} options={musicOptions} />
               <MenuRow mode={mode} item={{ title: '⬇' }} options={saveOptions} />
             </div>
           </div>

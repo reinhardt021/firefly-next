@@ -20,6 +20,10 @@ export default function MenuRow(props) {
   ];
   const selectedClass = `menu__option--selected-${props.mode}`
 
+  const titleClick = () => {
+    if (props.item.handleClick) props.item.handleClick()
+  };
+
   const updateSelected = (id, callback) => {
     //console.log('updating selected[' + id + ']');
     // loop through options and change selected for ID?
@@ -37,7 +41,10 @@ export default function MenuRow(props) {
 
   return (
     <div className={rowStyles.join(' ')}>
-      <div className={itemStyles.join(' ')}>{props.item.title}</div>
+      <div 
+        className={itemStyles.join(' ')}
+        onClick={titleClick}
+      >{props.item.title}</div>
       { options && options.map((option, index) => {
         const optionStyles = [ ...optionDefaultStyles ];
         if (option.selected) optionStyles.push(styles[selectedClass]) 
