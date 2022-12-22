@@ -23,6 +23,7 @@ export default function Main() {
   const [bgStyle, setBgStyle] = useState(BG2);
   const [textFamily, setTextFamily] = useState(T_SANS);
   const [textSize, setTextSize] = useState(T_MEDIUM);
+  const [isTyping, setIsTyping] = useState(false);
 
   const fontOptions = [
     {
@@ -160,8 +161,15 @@ export default function Main() {
     styles[`text--${textFamily}`],
     styles[`text--${textSize}`],
   ];
-  const textInput = useRef(null);
+  const menuStyles = [
+    styles['menu'],
+  ];
+  if (isTyping) {
+    textStyles.push(styles['text--typing']);
+    menuStyles.push(styles['menu--typing']);
+  }
 
+  const textInput = useRef(null);
   useEffect(() => {
     textInput.current.focus();
   }, []);
@@ -175,13 +183,18 @@ export default function Main() {
         <link rel="icon" href="/images/favicon.ico" />
       </Head>
 
-      <main className={bgStyles.join(' ')}>
+      <main className={bgStyles.join(' ')} onMouseMove={() => setIsTyping(false)}>
         <div className={maskStyles.join(' ')}>
 
           <div className={styles.row}>
-            <textarea className={textStyles.join(' ')} ref={textInput} id="input-text"></textarea>
+            <textarea 
+              className={textStyles.join(' ')} 
+              ref={textInput} 
+              id="input-text"
+              onChange={() => setIsTyping(true)}
+            ></textarea>
 
-            <div className={styles.menu}>
+            <div className={menuStyles.join(' ')}>
               <MenuRow mode={mode} item={{ title: 'F' }} options={fontOptions} />
               <MenuRow mode={mode} item={{ title: 'S' }} options={sizeOptions} />
               <MenuRow mode={mode} item={{ title: '🔘' }} options={bgOptions} />
