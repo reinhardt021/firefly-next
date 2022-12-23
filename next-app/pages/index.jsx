@@ -102,14 +102,6 @@ export default function Main() {
   let audio = null;
   const musicItem = { 
     title: '▶️',
-    handleClick: () => {
-      console.log('in music Item'); 
-      if (audio) audio.pause().then(_ => console.log('paused?')).catch(err => console.error(err));
-      //if (audio) audio.pause();
-      // // TODO: move this to a popup to play or not
-      // this would be much better if this worked like choosing a scene 
-      //setupAudio(audioFile, volume);
-    },
   };
   const musicOptions = [
     {
