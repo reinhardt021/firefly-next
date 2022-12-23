@@ -101,9 +101,14 @@ export default function Main() {
 
   let audio = null;
   const musicItem = { 
-    title: '⏯️',
+    title: '▶️',
     handleClick: () => {
-      setupAudio(audioFile, volume); // TODO: move this to a popup to play or not
+      console.log('in music Item'); 
+      if (audio) audio.pause().then(_ => console.log('paused?')).catch(err => console.error(err));
+      //if (audio) audio.pause();
+      // // TODO: move this to a popup to play or not
+      // this would be much better if this worked like choosing a scene 
+      //setupAudio(audioFile, volume);
     },
   };
   const musicOptions = [
@@ -204,7 +209,7 @@ export default function Main() {
     newAudio.loop = loop;
     newAudio.play()
       .then(_ => {
-        console.log('autoplay');
+        //console.log('autoplay');
         audio = newAudio;
       })
       .catch(err => {
