@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
-import MenuRow from './MenuRow'
+import MenuRow from '../components/MenuRow'
 import styles from '../styles/Main.module.css'
 
 const LIGHT = 'light';
