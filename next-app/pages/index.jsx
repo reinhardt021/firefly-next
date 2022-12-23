@@ -143,6 +143,8 @@ export default function Main() {
         const file = new Blob([document.getElementById('input-text').value], {type: 'text/plain'});
         element.href = URL.createObjectURL(file);
         element.download = 'firefly-note.txt';
+        element.target = '_blank';
+        element.rel = 'noopener noreferrer';
         document.body.appendChild(element);
         element.click();
       },
