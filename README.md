@@ -74,10 +74,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
     - [x] menu: light - svg icons
     - [x] menu: dark - svg icons
     - [x] menu: px.png // default
-- [ ] menu: toggle music
-    - [ ] menu: fire
-    - [ ] menu: wind // default
-    - [ ] menu: rain
+- [x] menu: toggle music
+    - [x] menu: fire
+    - [x] menu: wind // default
+    - [x] menu: rain
     - how to get m1 
       - default to very little heard
       - low volume
@@ -89,13 +89,13 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [x] textarea: have dotted lines dissappear when typing 
 - [x] menu: dissappear when typing
 
-- [ ] textarea: can drag and move from border
-
-
-- [ ] 
+- [x] try basic React Component
+- [x] move over all the things you made so far for FIREFLY
+- [ ] try basic build as Chrome Extension in dev mode
  
 ### STRETCH
 
+- [ ] textarea: can drag and move from border
 - [ ] config: Deepwork = offline use chrome extension?
 - [ ] backend: saving will sync with your services - ex: Dropbox
 - [ ] frontend: React Native for mobile options offline
@@ -115,15 +115,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [ ] backend: Rails API
 - [ ] backend: user profile
 - [ ] backend: save note automatically
+- [ ] frontend: have diff scenes with sounds rather than separate
 - [ ] 
-
-
-
-## TODO:
-
-- [x] try basic React Component
-- [x] move over all the things you made so far for FIREFLY
-- [ ] try basic build as Chrome Extension in dev mode
 
 
 ---
