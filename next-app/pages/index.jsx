@@ -110,20 +110,30 @@ export default function Main() {
     {
       id: 'm1',
       title: '🔥',
-      selected: true,
-      handleClick: () => setAudioFile(A1),
+      selected: false,
+      // TODO: figure out how to turn off previous and turn on the new one
+      handleClick: () => setAudioFile(oldFile => {
+        setupAudio(A1, volume);
+        return A1;
+      }),
     },
     {
       id: 'm2',
       title: '☁️',
-      selected: false,
-      handleClick: () => setAudioFile(A2),
+      selected: true,
+      handleClick: () => setAudioFile(oldFile => {
+        setupAudio(A2, volume);
+        return A2;
+      }),
     },
     {
       id: 'm3',
       title: '🌊',
       selected: false,
-      handleClick: () => setAudioFile(A3),
+      handleClick: () => setAudioFile(oldFile => {
+        setupAudio(A3, (volume / 5)); // have to do part of the volume becuase it is so loud
+        return A3;
+      }),
     },
   ];
 
@@ -186,6 +196,7 @@ export default function Main() {
   }
 
   const setupAudio = (filename, vol = 60, loop = true) => {
+    if (audio) audio.pause();
     const newAudio = new Audio(filename);
     newAudio.load();
     newAudio.autoplay = true;
@@ -194,9 +205,11 @@ export default function Main() {
     newAudio.play()
       .then(_ => {
         console.log('autoplay');
+        audio = newAudio;
       })
       .catch(err => {
         console.err('err', err);
+        audio = null;
       });
 
     return newAudio;
