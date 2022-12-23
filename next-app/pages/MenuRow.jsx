@@ -25,18 +25,13 @@ export default function MenuRow(props) {
   };
 
   const updateSelected = (id, callback) => {
-    //console.log('updating selected[' + id + ']');
-    // loop through options and change selected for ID?
     const newOptions = options.map(option => {
       option.selected = (id == option.id);
 
       return option;
     });
     setOptions(newOptions);
-    if (callback) {
-      //console.log('executing handleClick');
-      callback();
-    }
+    if (callback) callback();
   };
 
   return (

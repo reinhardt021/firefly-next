@@ -108,7 +108,6 @@ export default function Main() {
       id: 'm1',
       title: '🔥',
       selected: false,
-      // TODO: figure out how to turn off previous and turn on the new one
       handleClick: () => setAudioFile(oldFile => {
         setupAudio(A1, volume);
         return A1;
@@ -201,7 +200,6 @@ export default function Main() {
     newAudio.loop = loop;
     newAudio.play()
       .then(_ => {
-        //console.log('autoplay');
         audio = newAudio;
       })
       .catch(err => {
