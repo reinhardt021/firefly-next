@@ -76,19 +76,19 @@ export default function Main() {
   const bgOptions = [
     {
       id: 'b1',
-      title: '⚪️',
+      title: '☀',
       selected: true,
       handleClick: () => setMode(LIGHT),
     },
     {
       id: 'b2',
-      title: '⚫️',
+      title: '☽',
       selected: false,
       handleClick: () => setMode(DARK),
     },
     {
       id: 'b3',
-      title: '꩜',
+      title: '🔀',
       selected: false,
       handleClick: () => setBgStyle(currBG => {
         const bgs = BACKGROUNDS.filter(bg => bg != currBG);
@@ -101,7 +101,7 @@ export default function Main() {
 
   let audio = null;
   const musicItem = { 
-    title: '▶️',
+    title: '🎧',
   };
   const musicOptions = [
     {
@@ -115,7 +115,7 @@ export default function Main() {
     },
     {
       id: 'm2',
-      title: '☁️',
+      title: '🌧️',
       selected: true,
       handleClick: () => setAudioFile(oldFile => {
         setupAudio(A2, volume);
@@ -242,10 +242,10 @@ export default function Main() {
             ></textarea>
 
             <div className={menuStyles.join(' ')}>
-              <MenuRow mode={mode} item={{ title: 'F' }} options={fontOptions} />
-              <MenuRow mode={mode} item={{ title: 'S' }} options={sizeOptions} />
-              <MenuRow mode={mode} item={{ title: '🔘' }} options={bgOptions} />
+              <MenuRow mode={mode} item={{ title: '🌄' }} options={bgOptions} />
               <MenuRow mode={mode} item={musicItem} options={musicOptions} />
+              <MenuRow mode={mode} item={{ title: 'sS' }} options={sizeOptions} />
+              <MenuRow mode={mode} item={{ title: 'F' }} options={fontOptions} />
               <MenuRow mode={mode} item={{ title: '⬇' }} options={saveOptions} />
             </div>
           </div>
