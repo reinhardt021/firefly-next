@@ -24,12 +24,13 @@ const A3 = '/audio/AUD-03-free-ocean-waves-sound.mp3'
 
 export default function Main() {
   const [mode, setMode] = useState(LIGHT);
-  const [bgStyle, setBgStyle] = useState(BG2);
-  const [textFamily, setTextFamily] = useState(T_SANS);
-  const [textSize, setTextSize] = useState(T_MEDIUM);
-  const [isTyping, setIsTyping] = useState(false);
+  const [bgStyle, setBgStyle] = useState(BG1);
   const [audioFile, setAudioFile] = useState(A2);
   const [volume, setVolume] = useState(90);
+  const [textSize, setTextSize] = useState(T_MEDIUM);
+  const [textFamily, setTextFamily] = useState(T_SANS);
+  const [isTyping, setIsTyping] = useState(false);
+  const [note, setNote] = useState(null);
 
   const fontOptions = [
     {
@@ -76,19 +77,19 @@ export default function Main() {
   const bgOptions = [
     {
       id: 'b1',
-      title: '⚪️',
+      title: '☀',
       selected: true,
       handleClick: () => setMode(LIGHT),
     },
     {
       id: 'b2',
-      title: '⚫️',
+      title: '☽',
       selected: false,
       handleClick: () => setMode(DARK),
     },
     {
       id: 'b3',
-      title: '꩜',
+      title: '🔀',
       selected: false,
       handleClick: () => setBgStyle(currBG => {
         const bgs = BACKGROUNDS.filter(bg => bg != currBG);
@@ -101,7 +102,7 @@ export default function Main() {
 
   let audio = null;
   const musicItem = { 
-    title: '▶️',
+    title: '🎧',
   };
   const musicOptions = [
     {
@@ -115,7 +116,7 @@ export default function Main() {
     },
     {
       id: 'm2',
-      title: '☁️',
+      title: '🌧️',
       selected: true,
       handleClick: () => setAudioFile(oldFile => {
         setupAudio(A2, volume);
@@ -143,6 +144,8 @@ export default function Main() {
         const file = new Blob([document.getElementById('input-text').value], {type: 'text/plain'});
         element.href = URL.createObjectURL(file);
         element.download = 'firefly-note.txt';
+        element.target = '_blank';
+        element.rel = 'noopener noreferrer';
         document.body.appendChild(element);
         element.click();
       },
@@ -214,6 +217,12 @@ export default function Main() {
     setIsTyping(false)
   };
 
+  const handleInputChange = e => {
+    setIsTyping(true);
+    console.log(e.target.textContent);
+    setNote(e.target.textContent);
+  };
+
   const textInput = useRef(null);
   useEffect(() => {
     textInput.current.focus();
@@ -236,14 +245,15 @@ export default function Main() {
               className={textStyles.join(' ')} 
               ref={textInput} 
               id="input-text"
-              onChange={() => setIsTyping(true)}
+              onChange={handleInputChange}
+              //value={note ? note : 'test'}
             ></textarea>
 
             <div className={menuStyles.join(' ')}>
-              <MenuRow mode={mode} item={{ title: 'F' }} options={fontOptions} />
-              <MenuRow mode={mode} item={{ title: 'S' }} options={sizeOptions} />
-              <MenuRow mode={mode} item={{ title: '🔘' }} options={bgOptions} />
+              <MenuRow mode={mode} item={{ title: '🌄' }} options={bgOptions} />
               <MenuRow mode={mode} item={musicItem} options={musicOptions} />
+              <MenuRow mode={mode} item={{ title: 'sS' }} options={sizeOptions} />
+              <MenuRow mode={mode} item={{ title: 'F' }} options={fontOptions} />
               <MenuRow mode={mode} item={{ title: '⬇' }} options={saveOptions} />
             </div>
           </div>

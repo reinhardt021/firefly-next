@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "x": "next build && next export",
+    "export": "next build && next export && mv out/_next out/next && sed -i '' -e 's/\\/_next/\\.\\/next/g' out/**.html && mv out/index.html ../extension && rsync -va --delete-after out/next/ ../extension/next",
     "start": "next start",
     "lint": "next lint"
   },

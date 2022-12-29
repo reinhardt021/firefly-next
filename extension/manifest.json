@@ -1,23 +1,22 @@
 {
- "manifest_version": 2,
- "name": "Firefly",
- "version": "1.0.0",
+ "manifest_version": 3,
+
+ "name": "Firefly-X",
+ "version": "0.0.1",
  "description": "A digital alcove to write",
- "short_name": "Short Sample Name",
- "permissions": ["activeTab", "declarativeContent", "storage", "<all_urls>"],
- "content_scripts": [
-   {
-     "matches": ["<all_urls>"],
-     "css": ["background.css"],
-     "js": ["background.js"]
-   }
+ "short_name": "fx",
+
+ "permissions": [
+   "tabs"
  ],
- "browser_action": {
-   "default_title": "Does a thing when you do a thing",
-   "default_popup": "popup.html",
-   "default_icon": {
-     "16": "icons/icon16.png",
-     "32": "icons/icon32.png"
-   }
+
+ "action": {
+   "default_title": "Firefly-X"
+ },
+ "background": {
+   "service_worker": "background.js"
+ },
+ "chrome_url_overrides": {
+   "newtab": "index.html"
  }
 }
