@@ -1,11 +1,20 @@
 {
+ "manifest_version": 3,
+
  "name": "Firefly-X",
  "version": "0.0.1",
- "manifest_version": 3,
  "description": "A digital alcove to write",
  "short_name": "fx",
+
+ "permissions": [
+   "tabs"
+ ],
+
  "action": {
-   "default_title": "Firefly-X",
-   "default_popup": "index.html"
+   "default_title": "Firefly-X"
+ },
+
+ "chrome_url_overrides": {
+   "newtab": "index.html"
  }
 }
