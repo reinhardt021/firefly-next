@@ -24,7 +24,7 @@ const A3 = '/audio/AUD-03-free-ocean-waves-sound.mp3'
 
 export default function Main() {
   const [mode, setMode] = useState(LIGHT);
-  const [bgStyle, setBgStyle] = useState(BG2);
+  const [bgStyle, setBgStyle] = useState(BG1);
   const [audioFile, setAudioFile] = useState(A2);
   const [volume, setVolume] = useState(90);
   const [textSize, setTextSize] = useState(T_MEDIUM);
