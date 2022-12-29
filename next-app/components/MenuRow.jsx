@@ -36,21 +36,21 @@ export default function MenuRow(props) {
 
   return (
     <div className={rowStyles.join(' ')}>
-      <div 
+      <button 
         className={itemStyles.join(' ')}
         onClick={titleClick}
-      >{props.item.title}</div>
+      >{props.item.title}</button>
       { options && options.map((option, index) => {
         const optionStyles = [ ...optionDefaultStyles ];
         if (option.selected) optionStyles.push(styles[selectedClass]) 
 
         return (
-          <div key={index} 
+          <button key={index} 
             className={optionStyles.join(' ')} 
             onClick={() => updateSelected(option.id, option.handleClick)}
           >
             {option.title}
-          </div>
+          </button>
         );
       }) }
     </div>
