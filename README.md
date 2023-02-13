@@ -93,10 +93,13 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 - [x] move over all the things you made so far for FIREFLY
 - [ ] try basic build as Chrome Extension in dev mode
 
-- [ ] change to button rather than divs
-  - [ ] hover cursor
+- [x] change to button rather than divs
+  - [x] hover cursor
 
-- [ ] 
+- [ ] flex direction column
+- [ ] CSS classes for hide & show row options
+- [ ] CSS on click add class
+
  
 ### STRETCH
 
