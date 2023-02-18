@@ -149,6 +149,36 @@ export default function Main() {
         return A3;
       }),
     },
+    {
+      id: 'mUP',
+      title: '▲',
+      hoverTitle: 'Volume Up',
+      selected: false,
+      //handleClick: () => setAudioFile(oldFile => {
+        //setupAudio(A3, (volume / 5)); // have to do part of the volume becuase it is so loud
+        //return A3;
+      //}),
+    },
+    {
+      id: 'mPERCENT',
+      title: '%',
+      hoverTitle: 'Volume Percent',
+      selected: false,
+      //handleClick: () => setAudioFile(oldFile => {
+        //setupAudio(A3, (volume / 5)); // have to do part of the volume becuase it is so loud
+        //return A3;
+      //}),
+    },
+    {
+      id: 'mDOWN',
+      title: '▼',
+      hoverTitle: 'Volume Down',
+      selected: false,
+      //handleClick: () => setAudioFile(oldFile => {
+        //setupAudio(A3, (volume / 5)); // have to do part of the volume becuase it is so loud
+        //return A3;
+      //}),
+    },
   ];
 
   const saveOptions = [

@@ -169,6 +169,10 @@
  font-size: x-large;
 }
 
+#mPERCENT {
+    /*font-size: 0.55em;*/
+}
+
 .blinking-cursor {
   --blink: 1s blink step-end;
   --blink-inf: var(--blink) infinite;

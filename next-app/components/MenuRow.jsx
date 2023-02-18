@@ -52,6 +52,7 @@ export default function MenuRow(props) {
         return (
           <button key={index} 
             className={optionStyles.join(' ')} 
+            id={styles[option.id]}
             title={option.hoverTitle}
             onClick={() => updateSelected(option.id, option.handleClick)}
           >
