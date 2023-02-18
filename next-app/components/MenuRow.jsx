@@ -23,8 +23,12 @@ export default function MenuRow(props) {
   const selectedClass = `menu__option--selected-${props.mode}`
 
   const titleClick = () => {
-    if (props.item.handleClick) props.item.handleClick()
-    props.setSelectedItem(props.item.id);
+    //if (props.item.handleClick) props.item.handleClick() // not currently implemented
+    if (props.item.id === props.selectedItem) {
+      props.setSelectedItem(null);
+    } else {
+      props.setSelectedItem(props.item.id);
+    }
   };
 
   const updateSelected = (id, callback) => {
