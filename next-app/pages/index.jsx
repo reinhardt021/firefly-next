@@ -32,6 +32,10 @@ export default function Main() {
   const [isTyping, setIsTyping] = useState(false);
   const [note, setNote] = useState(null);
 
+  const fontItem = { 
+    title: 'F',
+    hoverTitle: 'Font Styling',
+  };
   const fontOptions = [
     {
       id: 'f1',
@@ -56,6 +60,10 @@ export default function Main() {
     },
   ];
 
+  const sizeItem = { 
+    title: 'sS',
+    hoverTitle: 'Font Sizing',
+  };
   const sizeOptions = [
     {
       id: 's1',
@@ -80,6 +88,10 @@ export default function Main() {
     },
   ];
 
+  const bgItem = { 
+    title: '🌄',
+    hoverTitle: 'Display Settings',
+  };
   const bgOptions = [
     {
       id: 'b1',
@@ -112,6 +124,7 @@ export default function Main() {
   let audio = null;
   const musicItem = { 
     title: '🎧',
+    hoverTitle: 'Ambient Sounds',
   };
   const musicOptions = [
     {
@@ -146,6 +159,10 @@ export default function Main() {
     },
   ];
 
+  const saveItem = { 
+    title: '⬇',
+    hoverTitle: 'Save Options',
+  };
   const saveOptions = [
     {
       id: 'd1',
@@ -264,11 +281,11 @@ export default function Main() {
             ></textarea>
 
             <div className={menuStyles.join(' ')}>
-              <MenuRow mode={mode} item={{ title: '🌄' }} options={bgOptions} />
+              <MenuRow mode={mode} item={bgItem} options={bgOptions} />
               <MenuRow mode={mode} item={musicItem} options={musicOptions} />
-              <MenuRow mode={mode} item={{ title: 'sS' }} options={sizeOptions} />
-              <MenuRow mode={mode} item={{ title: 'F' }} options={fontOptions} />
-              <MenuRow mode={mode} item={{ title: '⬇' }} options={saveOptions} />
+              <MenuRow mode={mode} item={sizeItem} options={sizeOptions} />
+              <MenuRow mode={mode} item={fontItem} options={fontOptions} />
+              <MenuRow mode={mode} item={saveItem} options={saveOptions} />
             </div>
           </div>
 
