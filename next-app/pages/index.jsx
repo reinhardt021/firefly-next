@@ -22,6 +22,13 @@ const A1 = '/audio/AUD-01-Fire-sound-effect.mp3'
 const A2 = '/audio/AUD-02-Windy-stormy-night-sound-effect.mp3'
 const A3 = '/audio/AUD-03-free-ocean-waves-sound.mp3'
 
+// MENU ITEMS
+const I_BG = 'bg';
+const I_MUSIC = 'music';
+const I_SIZE = 'size';
+const I_FONT = 'font';
+const I_SAVE = 'save';
+
 export default function Main() {
   const [mode, setMode] = useState(LIGHT);
   const [bgStyle, setBgStyle] = useState(BG1);
@@ -31,10 +38,29 @@ export default function Main() {
   const [textFamily, setTextFamily] = useState(T_SANS);
   const [isTyping, setIsTyping] = useState(false);
   const [note, setNote] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
 
-  const fontItem = { 
-    title: 'F',
-    hoverTitle: 'Font Styling',
+  const items = {
+    [I_BG]: {
+      title: '🌄',
+      hoverTitle: 'Display Settings',
+    },
+    [I_MUSIC]: {
+      title: '🎧',
+      hoverTitle: 'Ambient Sounds',
+    },
+    [I_SIZE]: {
+      title: 'sS',
+      hoverTitle: 'Font Sizing',
+    },
+    [I_FONT]: {
+      title: 'F',
+      hoverTitle: 'Font Styling',
+    },
+    [I_SAVE]: {
+      title: '⬇',
+      hoverTitle: 'Save Options',
+    },
   };
   const fontOptions = [
     {
@@ -60,10 +86,6 @@ export default function Main() {
     },
   ];
 
-  const sizeItem = { 
-    title: 'sS',
-    hoverTitle: 'Font Sizing',
-  };
   const sizeOptions = [
     {
       id: 's1',
@@ -88,10 +110,6 @@ export default function Main() {
     },
   ];
 
-  const bgItem = { 
-    title: '🌄',
-    hoverTitle: 'Display Settings',
-  };
   const bgOptions = [
     {
       id: 'b1',
@@ -122,10 +140,6 @@ export default function Main() {
   ];
 
   let audio = null;
-  const musicItem = { 
-    title: '🎧',
-    hoverTitle: 'Ambient Sounds',
-  };
   const musicOptions = [
     {
       id: 'm1',
@@ -159,10 +173,6 @@ export default function Main() {
     },
   ];
 
-  const saveItem = { 
-    title: '⬇',
-    hoverTitle: 'Save Options',
-  };
   const saveOptions = [
     {
       id: 'd1',
@@ -281,11 +291,11 @@ export default function Main() {
             ></textarea>
 
             <div className={menuStyles.join(' ')}>
-              <MenuRow mode={mode} item={bgItem} options={bgOptions} />
-              <MenuRow mode={mode} item={musicItem} options={musicOptions} />
-              <MenuRow mode={mode} item={sizeItem} options={sizeOptions} />
-              <MenuRow mode={mode} item={fontItem} options={fontOptions} />
-              <MenuRow mode={mode} item={saveItem} options={saveOptions} />
+              <MenuRow mode={mode} item={items[I_BG]} options={bgOptions} />
+              <MenuRow mode={mode} item={items[I_MUSIC]} options={musicOptions} />
+              <MenuRow mode={mode} item={items[I_SIZE]} options={sizeOptions} />
+              <MenuRow mode={mode} item={items[I_FONT]} options={fontOptions} />
+              <MenuRow mode={mode} item={items[I_SAVE]} options={saveOptions} />
             </div>
           </div>
 
