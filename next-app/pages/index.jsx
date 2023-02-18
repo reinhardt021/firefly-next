@@ -298,6 +298,10 @@ export default function Main() {
   const handleMouseMove = () => {
     setIsTyping(false)
   };
+    
+  const handleInputOnBlur = () => {
+    setIsTyping(false)
+  };
 
   const handleInputChange = e => {
     setIsTyping(true);
@@ -341,6 +345,7 @@ export default function Main() {
               ref={textInput} 
               id="input-text"
               onChange={handleInputChange}
+              onBlur={handleInputOnBlur}
               //value={note ? note : 'test'}
             ></textarea>
 
