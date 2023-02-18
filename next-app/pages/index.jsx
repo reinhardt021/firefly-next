@@ -275,6 +275,17 @@ export default function Main() {
     textInput.current.focus();
   }, []);
 
+    const fullMenu = (items && Object.values(items).map((item, index) => {
+        return (
+            <MenuRow
+                key={index}
+                mode={mode}
+                item={item}
+                options={item.options}
+            />
+        );
+    }));
+
   return (
     <>
       <Head>
@@ -297,11 +308,7 @@ export default function Main() {
             ></textarea>
 
             <div className={menuStyles.join(' ')}>
-              <MenuRow mode={mode} item={items[I_BG]} options={items[I_BG].options} />
-              <MenuRow mode={mode} item={items[I_MUSIC]} options={items[I_MUSIC].options} />
-              <MenuRow mode={mode} item={items[I_SIZE]} options={items[I_SIZE].options} />
-              <MenuRow mode={mode} item={items[I_FONT]} options={items[I_FONT].options} />
-              <MenuRow mode={mode} item={items[I_SAVE]} options={items[I_SAVE].options} />
+                {fullMenu}
             </div>
           </div>
 
