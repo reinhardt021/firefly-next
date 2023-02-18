@@ -40,28 +40,6 @@ export default function Main() {
   const [note, setNote] = useState(null);
   const [selectedItem, setSelectedItem] = useState(null);
 
-  const items = {
-    [I_BG]: {
-      title: '🌄',
-      hoverTitle: 'Display Settings',
-    },
-    [I_MUSIC]: {
-      title: '🎧',
-      hoverTitle: 'Ambient Sounds',
-    },
-    [I_SIZE]: {
-      title: 'sS',
-      hoverTitle: 'Font Sizing',
-    },
-    [I_FONT]: {
-      title: 'F',
-      hoverTitle: 'Font Styling',
-    },
-    [I_SAVE]: {
-      title: '⬇',
-      hoverTitle: 'Save Options',
-    },
-  };
   const fontOptions = [
     {
       id: 'f1',
@@ -214,6 +192,34 @@ export default function Main() {
     },
   ];
 
+  const items = {
+    [I_BG]: {
+      title: '🌄',
+      hoverTitle: 'Display Settings',
+      options: bgOptions,
+    },
+    [I_MUSIC]: {
+      title: '🎧',
+      hoverTitle: 'Ambient Sounds',
+      options: musicOptions,
+    },
+    [I_SIZE]: {
+      title: 'sS',
+      hoverTitle: 'Font Sizing',
+      options: sizeOptions,
+    },
+    [I_FONT]: {
+      title: 'F',
+      hoverTitle: 'Font Styling',
+      options: fontOptions,
+    },
+    [I_SAVE]: {
+      title: '⬇',
+      hoverTitle: 'Save Options',
+      options: saveOptions,
+    },
+  };
+
   const bgStyles = [
     styles[bgStyle],
   ];
@@ -291,11 +297,11 @@ export default function Main() {
             ></textarea>
 
             <div className={menuStyles.join(' ')}>
-              <MenuRow mode={mode} item={items[I_BG]} options={bgOptions} />
-              <MenuRow mode={mode} item={items[I_MUSIC]} options={musicOptions} />
-              <MenuRow mode={mode} item={items[I_SIZE]} options={sizeOptions} />
-              <MenuRow mode={mode} item={items[I_FONT]} options={fontOptions} />
-              <MenuRow mode={mode} item={items[I_SAVE]} options={saveOptions} />
+              <MenuRow mode={mode} item={items[I_BG]} options={items[I_BG].options} />
+              <MenuRow mode={mode} item={items[I_MUSIC]} options={items[I_MUSIC].options} />
+              <MenuRow mode={mode} item={items[I_SIZE]} options={items[I_SIZE].options} />
+              <MenuRow mode={mode} item={items[I_FONT]} options={items[I_FONT].options} />
+              <MenuRow mode={mode} item={items[I_SAVE]} options={items[I_SAVE].options} />
             </div>
           </div>
 
