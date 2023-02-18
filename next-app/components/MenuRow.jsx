@@ -23,8 +23,9 @@ export default function MenuRow(props) {
   const selectedClass = `menu__option--selected-${props.mode}`
 
   const titleClick = () => {
-    if (props.item.handleClick) props.item.handleClick()
-    props.setSelectedItem(props.item.id);
+    //if (props.item.handleClick) props.item.handleClick() // not currently implemented
+    const newSelection = (props.item.id === props.selectedItem) ? null : props.item.id;
+    props.setSelectedItem(newSelection);
   };
 
   const updateSelected = (id, callback) => {
@@ -41,6 +42,7 @@ export default function MenuRow(props) {
     <div className={rowStyles.join(' ')}>
       <button 
         className={itemStyles.join(' ')}
+        id={styles[props.item.id]}
         title={props.item.hoverTitle}
         onClick={titleClick}
       >{props.item.title}</button>
@@ -51,6 +53,7 @@ export default function MenuRow(props) {
         return (
           <button key={index} 
             className={optionStyles.join(' ')} 
+            id={styles[option.id]}
             title={option.hoverTitle}
             onClick={() => updateSelected(option.id, option.handleClick)}
           >
