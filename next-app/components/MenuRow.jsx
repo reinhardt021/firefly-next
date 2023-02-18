@@ -24,11 +24,8 @@ export default function MenuRow(props) {
 
   const titleClick = () => {
     //if (props.item.handleClick) props.item.handleClick() // not currently implemented
-    if (props.item.id === props.selectedItem) {
-      props.setSelectedItem(null);
-    } else {
-      props.setSelectedItem(props.item.id);
-    }
+    const newSelection = (props.item.id === props.selectedItem) ? null : props.item.id;
+    props.setSelectedItem(newSelection);
   };
 
   const updateSelected = (id, callback) => {
