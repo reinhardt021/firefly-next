@@ -42,6 +42,7 @@ export default function MenuRow(props) {
     <div className={rowStyles.join(' ')}>
       <button 
         className={itemStyles.join(' ')}
+        id={styles[props.item.id]}
         title={props.item.hoverTitle}
         onClick={titleClick}
       >{props.item.title}</button>
