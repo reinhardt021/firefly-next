@@ -22,6 +22,13 @@ const A1 = '/audio/AUD-01-Fire-sound-effect.mp3'
 const A2 = '/audio/AUD-02-Windy-stormy-night-sound-effect.mp3'
 const A3 = '/audio/AUD-03-free-ocean-waves-sound.mp3'
 
+// MENU ITEMS
+const I_BG = 'bg';
+const I_MUSIC = 'music';
+const I_SIZE = 'size';
+const I_FONT = 'font';
+const I_SAVE = 'save';
+
 export default function Main() {
   const [mode, setMode] = useState(LIGHT);
   const [bgStyle, setBgStyle] = useState(BG1);
@@ -31,23 +38,27 @@ export default function Main() {
   const [textFamily, setTextFamily] = useState(T_SANS);
   const [isTyping, setIsTyping] = useState(false);
   const [note, setNote] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(null);
 
   const fontOptions = [
     {
       id: 'f1',
       title: (<span className={styles['menu__option--sans-serif']}>F</span>),
+      hoverTitle: 'Sans Serif Font',
       selected: true,
       handleClick: () => setTextFamily(T_SANS),
     },
     {
       id: 'f2',
       title: (<span className={styles['menu__option--serif']}>F</span>),
+      hoverTitle: 'Serif Font',
       selected: false,
       handleClick: () => setTextFamily(T_SERIF),
     },
     {
       id: 'f3',
       title: (<span className={styles['menu__option--script']}>F</span>),
+      hoverTitle: 'Script Font',
       selected: false,
       handleClick: () => setTextFamily(T_SCRIPT),
     },
@@ -57,18 +68,21 @@ export default function Main() {
     {
       id: 's1',
       title: (<span className={styles['menu__option--small']}>S</span>),
+      hoverTitle: 'Small Font Size',
       selected: false,
       handleClick: () => setTextSize(T_SMALL),
     },
     {
       id: 's2',
       title: (<span className={styles['menu__option--medium']}>S</span>),
+      hoverTitle: 'Medium Font Size',
       selected: true,
       handleClick: () => setTextSize(T_MEDIUM),
     },
     {
       id: 's3',
       title: (<span className={styles['menu__option--large']}>S</span>),
+      hoverTitle: 'Large Font Size',
       selected: false,
       handleClick: () => setTextSize(T_LARGE),
     },
@@ -78,18 +92,21 @@ export default function Main() {
     {
       id: 'b1',
       title: '☀',
+      hoverTitle: 'Light Mode',
       selected: true,
       handleClick: () => setMode(LIGHT),
     },
     {
       id: 'b2',
       title: '☽',
+      hoverTitle: 'Dark Mode',
       selected: false,
       handleClick: () => setMode(DARK),
     },
     {
       id: 'b3',
       title: '🔀',
+      hoverTitle: 'Shuffle Background',
       selected: false,
       handleClick: () => setBgStyle(currBG => {
         const bgs = BACKGROUNDS.filter(bg => bg != currBG);
@@ -101,13 +118,11 @@ export default function Main() {
   ];
 
   let audio = null;
-  const musicItem = { 
-    title: '🎧',
-  };
   const musicOptions = [
     {
       id: 'm1',
       title: '🔥',
+      hoverTitle: 'Crackling Fire',
       selected: false,
       handleClick: () => setAudioFile(oldFile => {
         setupAudio(A1, volume);
@@ -117,6 +132,7 @@ export default function Main() {
     {
       id: 'm2',
       title: '🌧️',
+      hoverTitle: 'Wind & Rain',
       selected: true,
       handleClick: () => setAudioFile(oldFile => {
         setupAudio(A2, volume);
@@ -126,6 +142,7 @@ export default function Main() {
     {
       id: 'm3',
       title: '🌊',
+      hoverTitle: 'Crashing Waves',
       selected: false,
       handleClick: () => setAudioFile(oldFile => {
         setupAudio(A3, (volume / 5)); // have to do part of the volume becuase it is so loud
@@ -138,6 +155,7 @@ export default function Main() {
     {
       id: 'd1',
       title: '📄',
+      hoverTitle: 'Save to File',
       selected: false,
       handleClick: () => {
         const element = document.createElement('a');
@@ -153,6 +171,7 @@ export default function Main() {
     {
       id: 'd2',
       title: '💌',
+      hoverTitle: 'Email Text',
       selected: false,
       handleClick: () => {
         const textBody = document.getElementById('input-text').value;
@@ -172,6 +191,39 @@ export default function Main() {
       },
     },
   ];
+
+  const items = {
+    [I_BG]: {
+      id: I_BG,
+      title: '🌄',
+      hoverTitle: 'Display Settings',
+      options: bgOptions,
+    },
+    [I_MUSIC]: {
+      id: I_MUSIC,
+      title: '🎧',
+      hoverTitle: 'Ambient Sounds',
+      options: musicOptions,
+    },
+    [I_SIZE]: {
+      id: I_SIZE,
+      title: 'sS',
+      hoverTitle: 'Font Sizing',
+      options: sizeOptions,
+    },
+    [I_FONT]: {
+      id: I_FONT,
+      title: 'F',
+      hoverTitle: 'Font Styling',
+      options: fontOptions,
+    },
+    [I_SAVE]: {
+      id: I_SAVE,
+      title: '⬇',
+      hoverTitle: 'Save Options',
+      options: saveOptions,
+    },
+  };
 
   const bgStyles = [
     styles[bgStyle],
@@ -228,6 +280,19 @@ export default function Main() {
     textInput.current.focus();
   }, []);
 
+    const fullMenu = (items && Object.values(items).map((item, index) => {
+        return (
+            <MenuRow
+                key={index}
+                mode={mode}
+                selectedItem={selectedItem}
+                setSelectedItem={setSelectedItem}
+                item={item}
+                options={item.options}
+            />
+        );
+    }));
+
   return (
     <>
       <Head>
@@ -250,11 +315,7 @@ export default function Main() {
             ></textarea>
 
             <div className={menuStyles.join(' ')}>
-              <MenuRow mode={mode} item={{ title: '🌄' }} options={bgOptions} />
-              <MenuRow mode={mode} item={musicItem} options={musicOptions} />
-              <MenuRow mode={mode} item={{ title: 'sS' }} options={sizeOptions} />
-              <MenuRow mode={mode} item={{ title: 'F' }} options={fontOptions} />
-              <MenuRow mode={mode} item={{ title: '⬇' }} options={saveOptions} />
+                {fullMenu}
             </div>
           </div>
 

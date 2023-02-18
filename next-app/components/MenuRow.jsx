@@ -3,8 +3,10 @@ import styles from '../styles/Main.module.css'
 
 export default function MenuRow(props) {
   const [options, setOptions] = useState(props.options);
+  const rowClass = `menu__row--${props.mode}`
   const rowStyles = [
     styles['menu__row'],
+    styles[rowClass],
   ];
   const itemClass = `menu__item--${props.mode}`
   const itemStyles = [
@@ -22,6 +24,7 @@ export default function MenuRow(props) {
 
   const titleClick = () => {
     if (props.item.handleClick) props.item.handleClick()
+    props.setSelectedItem(props.item.id);
   };
 
   const updateSelected = (id, callback) => {
@@ -38,15 +41,17 @@ export default function MenuRow(props) {
     <div className={rowStyles.join(' ')}>
       <button 
         className={itemStyles.join(' ')}
+        title={props.item.hoverTitle}
         onClick={titleClick}
       >{props.item.title}</button>
-      { options && options.map((option, index) => {
+      { (props.item.id === props.selectedItem) && options && options.map((option, index) => {
         const optionStyles = [ ...optionDefaultStyles ];
         if (option.selected) optionStyles.push(styles[selectedClass]) 
 
         return (
           <button key={index} 
             className={optionStyles.join(' ')} 
+            title={option.hoverTitle}
             onClick={() => updateSelected(option.id, option.handleClick)}
           >
             {option.title}
