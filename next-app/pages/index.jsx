@@ -194,26 +194,31 @@ export default function Main() {
 
   const items = {
     [I_BG]: {
+      id: I_BG,
       title: '🌄',
       hoverTitle: 'Display Settings',
       options: bgOptions,
     },
     [I_MUSIC]: {
+      id: I_MUSIC,
       title: '🎧',
       hoverTitle: 'Ambient Sounds',
       options: musicOptions,
     },
     [I_SIZE]: {
+      id: I_SIZE,
       title: 'sS',
       hoverTitle: 'Font Sizing',
       options: sizeOptions,
     },
     [I_FONT]: {
+      id: I_FONT,
       title: 'F',
       hoverTitle: 'Font Styling',
       options: fontOptions,
     },
     [I_SAVE]: {
+      id: I_SAVE,
       title: '⬇',
       hoverTitle: 'Save Options',
       options: saveOptions,
@@ -280,6 +285,8 @@ export default function Main() {
             <MenuRow
                 key={index}
                 mode={mode}
+                selectedItem={selectedItem}
+                setSelectedItem={setSelectedItem}
                 item={item}
                 options={item.options}
             />

@@ -24,6 +24,7 @@ export default function MenuRow(props) {
 
   const titleClick = () => {
     if (props.item.handleClick) props.item.handleClick()
+    props.setSelectedItem(props.item.id);
   };
 
   const updateSelected = (id, callback) => {
@@ -43,7 +44,7 @@ export default function MenuRow(props) {
         title={props.item.hoverTitle}
         onClick={titleClick}
       >{props.item.title}</button>
-      { options && options.map((option, index) => {
+      { (props.item.id === props.selectedItem) && options && options.map((option, index) => {
         const optionStyles = [ ...optionDefaultStyles ];
         if (option.selected) optionStyles.push(styles[selectedClass]) 
 
