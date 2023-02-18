@@ -36,18 +36,21 @@ export default function Main() {
     {
       id: 'f1',
       title: (<span className={styles['menu__option--sans-serif']}>F</span>),
+      hoverTitle: 'Sans Serif Font',
       selected: true,
       handleClick: () => setTextFamily(T_SANS),
     },
     {
       id: 'f2',
       title: (<span className={styles['menu__option--serif']}>F</span>),
+      hoverTitle: 'Serif Font',
       selected: false,
       handleClick: () => setTextFamily(T_SERIF),
     },
     {
       id: 'f3',
       title: (<span className={styles['menu__option--script']}>F</span>),
+      hoverTitle: 'Script Font',
       selected: false,
       handleClick: () => setTextFamily(T_SCRIPT),
     },
@@ -57,18 +60,21 @@ export default function Main() {
     {
       id: 's1',
       title: (<span className={styles['menu__option--small']}>S</span>),
+      hoverTitle: 'Small Font Size',
       selected: false,
       handleClick: () => setTextSize(T_SMALL),
     },
     {
       id: 's2',
       title: (<span className={styles['menu__option--medium']}>S</span>),
+      hoverTitle: 'Medium Font Size',
       selected: true,
       handleClick: () => setTextSize(T_MEDIUM),
     },
     {
       id: 's3',
       title: (<span className={styles['menu__option--large']}>S</span>),
+      hoverTitle: 'Large Font Size',
       selected: false,
       handleClick: () => setTextSize(T_LARGE),
     },
@@ -78,18 +84,21 @@ export default function Main() {
     {
       id: 'b1',
       title: '☀',
+      hoverTitle: 'Light Mode',
       selected: true,
       handleClick: () => setMode(LIGHT),
     },
     {
       id: 'b2',
       title: '☽',
+      hoverTitle: 'Dark Mode',
       selected: false,
       handleClick: () => setMode(DARK),
     },
     {
       id: 'b3',
       title: '🔀',
+      hoverTitle: 'Shuffle Background',
       selected: false,
       handleClick: () => setBgStyle(currBG => {
         const bgs = BACKGROUNDS.filter(bg => bg != currBG);
@@ -108,6 +117,7 @@ export default function Main() {
     {
       id: 'm1',
       title: '🔥',
+      hoverTitle: 'Crackling Fire',
       selected: false,
       handleClick: () => setAudioFile(oldFile => {
         setupAudio(A1, volume);
@@ -117,6 +127,7 @@ export default function Main() {
     {
       id: 'm2',
       title: '🌧️',
+      hoverTitle: 'Wind & Rain',
       selected: true,
       handleClick: () => setAudioFile(oldFile => {
         setupAudio(A2, volume);
@@ -126,6 +137,7 @@ export default function Main() {
     {
       id: 'm3',
       title: '🌊',
+      hoverTitle: 'Crashing Waves',
       selected: false,
       handleClick: () => setAudioFile(oldFile => {
         setupAudio(A3, (volume / 5)); // have to do part of the volume becuase it is so loud
@@ -138,6 +150,7 @@ export default function Main() {
     {
       id: 'd1',
       title: '📄',
+      hoverTitle: 'Save to File',
       selected: false,
       handleClick: () => {
         const element = document.createElement('a');
@@ -153,6 +166,7 @@ export default function Main() {
     {
       id: 'd2',
       title: '💌',
+      hoverTitle: 'Email Text',
       selected: false,
       handleClick: () => {
         const textBody = document.getElementById('input-text').value;

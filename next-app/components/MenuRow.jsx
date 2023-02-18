@@ -3,8 +3,10 @@ import styles from '../styles/Main.module.css'
 
 export default function MenuRow(props) {
   const [options, setOptions] = useState(props.options);
+  const rowClass = `menu__row--${props.mode}`
   const rowStyles = [
     styles['menu__row'],
+    styles[rowClass],
   ];
   const itemClass = `menu__item--${props.mode}`
   const itemStyles = [
@@ -47,6 +49,7 @@ export default function MenuRow(props) {
         return (
           <button key={index} 
             className={optionStyles.join(' ')} 
+            title={option.hoverTitle}
             onClick={() => updateSelected(option.id, option.handleClick)}
           >
             {option.title}
