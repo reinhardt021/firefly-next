@@ -38,7 +38,7 @@ export default function Main() {
   const [textFamily, setTextFamily] = useState(T_SANS);
   const [isTyping, setIsTyping] = useState(false);
   const [note, setNote] = useState(null);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(I_MUSIC);
 
   const fontOptions = [
     {
