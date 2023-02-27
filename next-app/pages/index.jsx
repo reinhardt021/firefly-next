@@ -38,7 +38,7 @@ export default function Main() {
   const [textFamily, setTextFamily] = useState(T_SANS);
   const [isTyping, setIsTyping] = useState(false);
   const [note, setNote] = useState(null);
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedItem, setSelectedItem] = useState(I_MUSIC);
 
   const fontOptions = [
     {
@@ -133,7 +133,7 @@ export default function Main() {
       id: 'm2',
       title: '🌧️',
       hoverTitle: 'Wind & Rain',
-      selected: true,
+      selected: false,
       handleClick: () => setAudioFile(oldFile => {
         setupAudio(A2, volume);
         return A2;
