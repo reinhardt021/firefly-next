@@ -133,7 +133,7 @@ export default function Main() {
       id: 'm2',
       title: '🌧️',
       hoverTitle: 'Wind & Rain',
-      selected: true,
+      selected: false,
       handleClick: () => setAudioFile(oldFile => {
         setupAudio(A2, volume);
         return A2;
