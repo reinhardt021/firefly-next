@@ -39,6 +39,7 @@ export default function Main() {
   const [isTyping, setIsTyping] = useState(false);
   const [note, setNote] = useState(null);
   const [selectedItem, setSelectedItem] = useState(I_MUSIC);
+  const [paused, setPaused] = useState(false);
 
   const fontOptions = [
     {
@@ -164,6 +165,9 @@ export default function Main() {
       title: '%',
       hoverTitle: 'Volume Percent',
       selected: false,
+      handleClick: () => {
+        if (audio) togglePlayback(audio);
+      }
       //handleClick: () => setAudioFile(oldFile => {
         //setupAudio(A3, (volume / 5)); // have to do part of the volume becuase it is so loud
         //return A3;
@@ -275,6 +279,15 @@ export default function Main() {
     textStyles.push(styles['text--typing']);
     menuStyles.push(styles['menu--typing']);
   }
+
+  const togglePlayback = (theAudio) => {
+    if (paused) {
+      theAudio.play();
+    } else {
+      theAudio.pause();
+    } 
+    setPaused(!paused);
+  };
 
   const setupAudio = (filename, vol = 60, loop = true) => {
     if (audio) audio.pause();
