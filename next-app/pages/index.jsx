@@ -314,18 +314,18 @@ export default function Main() {
     textInput.current.focus();
   }, []);
 
-    const fullMenu = (items && Object.values(items).map((item, index) => {
-        return (
-            <MenuRow
-                key={index}
-                mode={mode}
-                selectedItem={selectedItem}
-                setSelectedItem={setSelectedItem}
-                item={item}
-                options={item.options}
-            />
-        );
-    }));
+  const fullMenu = (items && Object.values(items).map((item, index) => {
+      return (
+          <MenuRow
+              key={index}
+              mode={mode}
+              selectedItem={selectedItem}
+              setSelectedItem={setSelectedItem}
+              item={item}
+              options={item.options}
+          />
+      );
+  }));
 
   return (
     <>
