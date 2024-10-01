@@ -31,7 +31,7 @@ const I_SAVE = 'save';
 
 export default function Main() {
   const [mode, setMode] = useState(LIGHT);
-  const [bgStyle, setBgStyle] = useState(BG1);
+  const [bgStyle, setBgStyle] = useState(BG2);
   const [audioFile, setAudioFile] = useState(A2);
   const [volume, setVolume] = useState(90);
   const [textSize, setTextSize] = useState(T_MEDIUM);
