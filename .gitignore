@@ -36,3 +36,4 @@ Session.vim
 extension.zip
 
 *.swp
+package-lock.json
